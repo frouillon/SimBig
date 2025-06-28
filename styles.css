@@ -1,0 +1,799 @@
+/* --- Reset general para todo --- */
+* {
+  margin: 0;                     /* Quita márgenes por defecto */
+  padding: 0;                    /* Quita relleno por defecto */
+  box-sizing: border-box;       /* Incluye borde y padding en el tamaño total */
+}
+
+/* --- Fondo general del cuerpo --- */
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;   /* Fuente profesional */
+  background-color: #ffffff;        /* Fondo blanco limpio */
+  line-height: 1.6;
+  color: #333333;
+}
+
+/* --- Barra de navegación fija --- */
+.navbar {
+  display: flex;                   /* Coloca elementos en línea */
+  align-items: center;            /* Centra verticalmente */
+  justify-content: space-between;/* Espacia los elementos a los extremos */
+  padding: 12px 30px;             /* Espaciado interno */
+  background-color: white;        /* Fondo blanco */
+  position: fixed;                /* Fija arriba en la página */
+  top: 0;                         /* Posición superior 0 */
+  width: 100%;                    /* Ocupa todo el ancho */
+  z-index: 100;                   /* Se muestra encima de todo */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave */
+}
+
+/* --- Logo simple --- */
+.logo {
+  font-weight: bold;             /* Texto en negrita */
+}
+
+/* --- Menú de navegación --- */
+.nav-links {
+  display: flex;                 /* Enlaces en línea */
+  gap: 15px;                     /* Espacio entre enlaces */
+  font-size: 14px;               /* Tamaño de fuente */
+}
+
+/* --- Enlaces del menú --- */
+.nav-links a {
+  text-decoration: none;        /* Quita subrayado */
+  color: black;                 /* Color negro */
+  transition: 0.3s;             /* Suaviza el hover */
+}
+
+/* --- Hover en enlaces --- */
+.nav-links a:hover {
+  color: #007bff;               /* Azul al pasar el cursor */
+}
+
+/* --- Botón de idioma --- */
+.language-switch {
+  font-size: 14px;              /* Tamaño de texto */
+  background: #000;             /* Fondo negro */
+  color: #fff;                  /* Texto blanco */
+  padding: 6px 10px;            /* Espaciado interno */
+  border-radius: 15px;          /* Bordes redondeados */
+  cursor: pointer;              /* Cambia a manito al pasar */
+}
+
+/* --- Sección principal con fondo --- */
+.hero {
+  height: 100vh;                                 /* Ocupa toda la pantalla */
+  background-image: url('https://portal.andina.pe/EDPfotografia3/Thumbnail/2021/01/31/000744932W.jpg');
+  background-size: cover;                        /* Cubre todo el fondo */
+  background-position: center;                   /* Centrado */
+  position: relative;                            /* Para posicionar elementos internos */
+  padding-top: 100px;                            /* Espacio debajo del navbar */
+  display: flex;                                 /* Contenedor flexible */
+  flex-direction: column;                        /* Coloca hijos en columna */
+  justify-content: flex-start;                   /* Inicia desde arriba */
+}
+
+/* Capa oscura encima del fondo */
+.hero::before {
+  content: "";                         /* Crea la capa vacía */
+  position: absolute;                  /* Se posiciona dentro del .hero */
+  top: 0; left: 0;                     /* Inicia desde la esquina superior izquierda */
+  width: 100%; height: 100%;          /* Cubre toda el área */
+  background-color: rgba(0, 0, 0, 0.4);/* Color negro con opacidad del 40% */
+  z-index: 0;                          /* Debajo del contenido */
+}
+
+/* Asegura que overlay y timer estén por encima de la capa oscura */
+.overlay, .timer-bar {
+  position: relative;                  /* Aparecen encima de ::before */
+  z-index: 1;
+}
+
+/* --- Fondo blanco semitransparente para texto --- */
+.overlay {
+  background-color: rgba(255, 255, 255, 0.6);     /* Blanco transparente */
+  max-width: 600px;                              /* Máximo ancho del recuadro */
+  margin-left: 60px;                             /* Separación desde el borde izquierdo */
+  padding: 40px;                                 /* Espaciado interno */
+  border-radius: 8px;                            /* Bordes suaves */
+}
+
+/* --- Título principal --- */
+.content h1 {
+  font-size: 2.5rem;                             /* Tamaño grande */
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; /* Fuente profesional */
+  font-weight: 600;                              /* Peso moderado */
+  color: #222;                                   /* Color oscuro */
+  line-height: 1.4;                              /* Altura entre líneas */
+  margin-bottom: 30px;                           /* Espacio inferior */
+  text-align: left;                              /* Alineado a la izquierda */
+}
+
+/* --- Subtítulos e info adicional --- */
+.subinfo {
+  font-size: 1rem;                               /* Tamaño normal */
+  color: #333;                                   /* Gris oscuro */
+  margin-bottom: 5px;                            /* Espacio entre líneas */
+  text-align: left;                              /* Alineado a la izquierda */
+}
+
+/* --- Barra del temporizador --- */
+.timer-bar {
+  width: 100%;                                   /* Ocupa todo el ancho */
+  background-color: rgba(255, 255, 255, 0.6);   /* Blanco semitransparente */
+  padding: 25px 0;                               /* Alto mayor, sin padding lateral */
+  position: absolute;                            /* Posición relativa al padre */
+  bottom: 80px;                                  /* Subido desde el fondo */
+  text-align: center;                            /* Texto centrado */
+}
+
+/* --- Texto del temporizador --- */
+.timer-text {
+  font-weight: bold;                             /* Negrita */
+  font-size: 1.2rem;                             /* Tamaño medio */
+}
+
+
+/* --- Sección de tarjetas informativas --- */
+.info-section {
+  background-color: #f8f9fa;              /* Fondo gris muy claro */
+  padding: 80px 40px 60px 40px;           /* Espaciado limpio */
+}
+
+.info-cards {
+  display: grid;                          /* Grid para mejor control */
+  grid-template-columns: repeat(4, 1fr);  /* 4 columnas exactas */
+  gap: 20px;                              /* Espacio más reducido */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #ffffff;                    /* Fondo blanco limpio */
+  padding: 30px 20px;                     /* Espaciado más compacto */
+  text-align: center;
+  border-radius: 8px;                     /* Bordes suaves pero no excesivos */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Sombra sutil */
+  transition: all 0.3s ease;              /* Transición suave */
+  border: 1px solid #e9ecef;              /* Borde sutil */
+}
+
+/* Efecto hover minimalista */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.card img {
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #6c757d;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* --- Sección About con curva superior --- */
+.about-section {
+  background-color: #ffffff;              /* Fondo blanco limpio */
+  padding: 100px 40px;
+  border-top-left-radius: 100% 50px;      /* Curvas suaves */
+  border-top-right-radius: 100% 50px;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 60px;
+  color: #2c3e50;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-content p {
+  text-align: left;
+  font-size: 1.1rem;
+  color: #555555;
+  line-height: 1.8;
+  font-weight: 400;
+  padding: 0;
+}
+
+.about-content img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.about-content img:hover {
+  transform: scale(1.02);
+}
+
+.speakers-section {
+  background-color: #f8f9fa;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.speakers-section h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #2c3e50;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.speakers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 40px; /* más pegadas horizontalmente */
+  justify-content: center;
+}
+
+.speaker-card {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.photo-wrapper {
+  position: relative;
+  width: 120px; /* más grande */
+  height: 160px;
+}
+
+.photo-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 100%;
+  height: 100%;
+  background-color: #dcdcdc;
+  z-index: 0;
+  border-radius: 4px;
+}
+
+.speaker-photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #999;
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.speaker-info p {
+  font-size: 1.1rem; /* más grande */
+  color: #333;
+  margin: 4px 0;
+  text-align: left;
+}
+
+.view-all-button {
+  margin-top: 50px;
+}
+
+.view-all-button button {
+  padding: 12px 24px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.view-all-button button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s;
+}
+
+.view-all-button button:hover::before {
+  left: 100%;
+}
+
+.view-all-button button:hover {
+  background-color: #2c3e50;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Sección de SILABUS --- */
+.syllabus-section {
+  background-color: #ffffff;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.syllabus-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 60px;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.syllabus-pdf-placeholder {
+  background-color: #e9ecef;
+  width: 400px;
+  height: 300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #dee2e6;
+}
+
+.syllabus-pdf-placeholder:hover {
+  background-color: #dee2e6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.syllabus-pdf-placeholder span {
+  font-size: 1.5rem;
+  color: #6c757d;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* --- Animaciones de aparición --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Aplicación de animaciones a las secciones --- */
+.info-section {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.about-section {
+  animation: fadeInLeft 0.8s ease-out 0.2s both;
+}
+
+.speakers-section {
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.syllabus-section {
+  animation: fadeInRight 0.8s ease-out 0.6s both;
+}
+
+.schedule-section {
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+.sponsors-section {
+  animation: scaleIn 0.8s ease-out 1s both;
+}
+
+.card {
+  animation: fadeInUp 0.6s ease-out var(--delay, 0s) both;
+}
+
+.card:nth-child(1) { --delay: 0.1s; }
+.card:nth-child(2) { --delay: 0.2s; }
+.card:nth-child(3) { --delay: 0.3s; }
+.card:nth-child(4) { --delay: 0.4s; }
+
+.speaker-card {
+  animation: fadeInUp 0.6s ease-out var(--delay, 0s) both;
+}
+
+.speaker-card:nth-child(odd) { --delay: 0.2s; }
+.speaker-card:nth-child(even) { --delay: 0.4s; }
+
+/* --- Sección de SCHEDULE --- */
+.schedule-section {
+  background-color: #f8f9fa;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.schedule-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 60px;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.schedule-placeholder {
+  background-color: #e9ecef;
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid #dee2e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.schedule-placeholder:hover {
+  background-color: #dee2e6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Sección de SPONSORS --- */
+.sponsors-section {
+  background-color: #ffffff;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.sponsors-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 60px;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.sponsor-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.sponsor-logo {
+  width: 150px;
+  height: 100px;
+  background-color: #e9ecef;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.sponsor-logo:hover {
+  background-color: #dee2e6;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.sponsor-item p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* --- Scroll suave para toda la página --- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- Animaciones adicionales para elementos individuales --- */
+.navbar {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.timer-bar {
+  animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.overlay {
+  animation: fadeInLeft 0.8s ease-out 0.3s both;
+}
+
+/* --- Mejoras en animaciones responsivas --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Animación de carga inicial --- */
+body {
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- Responsive design --- */
+@media (max-width: 1024px) {
+  .info-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .card {
+    padding: 25px 20px;
+  }
+  
+  .sponsors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .sponsor-logo {
+    width: 120px;
+    height: 80px;
+  }
+  
+  .schedule-placeholder {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .nav-links {
+    margin-top: 10px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .hero {
+    height: 80vh;
+    padding-top: 120px;
+  }
+  
+  .overlay {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+  }
+  
+  .content h1 {
+    font-size: 2rem;
+  }
+  
+  .info-section {
+    padding: 60px 20px 40px 20px;
+  }
+  
+  .info-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .card {
+    padding: 20px 15px;
+  }
+  
+  .card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .card p {
+    font-size: 0.9rem;
+  }
+  
+  .about-section {
+    padding: 80px 20px;
+  }
+  
+  .about-section h2 {
+    font-size: 2.2rem;
+  }
+  
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .about-content p {
+    padding: 0;
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  .speakers-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .speaker-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .syllabus-pdf-placeholder {
+    width: 300px;
+    height: 200px;
+  }
+  
+  .syllabus-title, .schedule-title, .sponsors-title {
+    font-size: 2rem;
+  }
+  
+  .schedule-section, .sponsors-section {
+    padding: 60px 20px;
+  }
+  
+  .schedule-placeholder {
+    height: 300px;
+  }
+  
+  .sponsors-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .sponsor-logo {
+    width: 100px;
+    height: 70px;
+  }
+  
+  .sponsor-item p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .card {
+    padding: 25px 20px;
+  }
+  
+  .card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .card p {
+    font-size: 1rem;
+  }
+  
+  .nav-links {
+    font-size: 12px;
+    gap: 8px;
+  }
+  
+  .content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .overlay {
+    margin: 20px;
+    padding: 15px;
+  }
+  
+  .schedule-placeholder {
+    height: 250px;
+  }
+  
+  .syllabus-pdf-placeholder {
+    width: 250px;
+    height: 180px;
+  }
+  
+  .sponsor-logo {
+    width: 80px;
+    height: 60px;
+  }
+  
+  .sponsor-item p {
+    font-size: 1rem;
+  }
+}
+
