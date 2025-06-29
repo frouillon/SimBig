@@ -7,21 +7,22 @@
   <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
+
 <body>
 
   <header class="navbar">
     <div class="logo">LOGO</div>
     <nav class="nav-links">
-        <a href="#">Home</a>
-        <a href="#information">Information</a>
-        <a href="#speakers">Speakers</a>
-        <a href="#syllabus">Syllabus</a>
-        <a href="#">Courses</a>
-        <a href="#schedule">Schedule</a>
-        <a href="#sponsors">Sponsors</a>
-        <a href="#dates">Dates</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
+        <a href="#" data-i18n="home">Home</a>
+        <a href="#information" data-i18n="information">Information</a>
+        <a href="#speakers" data-i18n="speakers">Speakers</a>
+        <a href="#syllabus" data-i18n="syllabus">Syllabus</a>
+        <a href="#" data-i18n="courses">Courses</a>
+        <a href="#schedule" data-i18n="schedule">Schedule</a>
+        <a href="#sponsors" data-i18n="sponsors">Sponsors</a>
+        <a href="#dates" data-i18n="dates">Dates</a>
+        <a href="#faq" data-i18n="faq" >FAQ</a>
+        <a href="#contact" data-i18n="contact">Contact</a>
     </nav>
     <div class="language-switch">
       🇬🇧 ENGLISH ▼
@@ -29,21 +30,21 @@
   </header>
 
   <section class="hero">
-    <div class="overlay">
-      <div class="content">
-        <h1>
-          LATAM School of <br />
-          Artificial Intelligence <br />
-          2025
-        </h1>
-        <p class="subinfo">Co-located with SIMBig 2025</p>
-        <p class="subinfo">📍 FISI-UNMSM, Lima, Perú</p>
-        <p class="subinfo">📅 29–31 October 2025</p>
+      <div class="overlay">
+          <div class="content">
+              <h1 data-i18n="title">
+                  LATAM School of <br />
+                  Artificial Intelligence <br />
+                  2025
+              </h1>
+              <p class="subinfo" data-i18n="colocated">Co-located with SIMBig 2025</p>
+              <p class="subinfo" data-i18n="location">📍 FISI-UNMSM, Lima, Perú</p>
+              <p class="subinfo" data-i18n="date">📅 29–31 October 2025</p>
+          </div>
       </div>
-    </div>
-    <div class="timer-bar">
-      <div class="timer-text">TIMER 99 days &nbsp; 24h &nbsp; 60 min &nbsp; 60 seconds</div>
-    </div>
+      <div class="timer-bar">
+          <div class="timer-text" data-i18n="timer">TIMER 99 days &nbsp; 24h &nbsp; 60 min &nbsp; 60 seconds</div>
+      </div>
   </section>
   <!-- Sección informativa debajo del hero -->
 
@@ -383,5 +384,65 @@
       </div>
   </footer>
 
+  <script>
+      const translations = {
+          es: {
+              home: "Inicio",
+              information: "Información",
+              speakers: "Ponentes",
+              syllabus: "Temario",
+              courses: "Cursos",
+              schedule: "Horario",
+              sponsors: "Patrocinadores",
+              dates: "Fechas",
+              faq: "Preguntas Frecuentes",
+              contact: "Contacto",
+              language: "🇪🇸 ESPAÑOL ▼",
+              // Hero
+              title: "Escuela LATAM de Inteligencia Artificial 2025",
+              colocated: "Coorganizado con SIMBig 2025",
+              location: "📍 FISI-UNMSM, Lima, Perú",
+              date: "📅 29–31 Octubre 2025",
+              timer: "TEMPORIZADOR 99 días &nbsp; 24h &nbsp; 60 min &nbsp; 60 segundos"
+          },
+          en: {
+              home: "Home",
+              information: "Information",
+              speakers: "Speakers",
+              syllabus: "Syllabus",
+              courses: "Courses",
+              schedule: "Schedule",
+              sponsors: "Sponsors",
+              dates: "Dates",
+              faq: "FAQ",
+              contact: "Contact",
+              language: "🇬🇧 ENGLISH ▼",
+              // Hero
+              title: "LATAM School of Artificial Intelligence 2025",
+
+              colocated: "Co-located with SIMBig 2025",
+              location: "📍 FISI-UNMSM, Lima, Perú",
+              date: "📅 29–31 October 2025",
+              timer: "TIMER 99 days &nbsp; 24h &nbsp; 60 min &nbsp; 60 seconds"
+          }
+      };
+
+      let currentLang = 'en'; // idioma inicial
+
+      document.querySelector('.language-switch').addEventListener('click', () => {
+          currentLang = currentLang === 'en' ? 'es' : 'en';
+
+          // Cambia los textos
+          document.querySelectorAll('[data-i18n]').forEach(el => {
+              const key = el.getAttribute('data-i18n');
+              el.textContent = translations[currentLang][key];
+          });
+
+          // Cambia el botón de idioma
+          document.querySelector('.language-switch').textContent = translations[currentLang].language;
+      });
+  </script>
+
 </body>
+
 </html>

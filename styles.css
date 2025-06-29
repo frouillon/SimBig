@@ -812,7 +812,7 @@ body {
 
 .footer-separator {
   width: 5px;
-  height: 200px;                                 /* Altura reducida */
+  height: 350px;                                 /* Altura reducida */
   background-color: #ccc;
   margin: 0 80px;                                /* Márgenes reducidos */
 }
