@@ -5,31 +5,84 @@
   box-sizing: border-box;       /* Incluye borde y padding en el tamaño total */
 }
 
+/* --- Variables de colores profesionales --- */
+:root {
+  --primary-blue: #1e3a8a;           /* Azul principal */
+  --secondary-blue: #3b82f6;         /* Azul secundario */
+  --light-blue: #e0f2fe;             /* Azul claro */
+  --accent-blue: #0ea5e9;            /* Azul de acento */
+  --dark-blue: #1e40af;              /* Azul oscuro */
+  
+  --neutral-white: #ffffff;          /* Blanco puro */
+  --neutral-light: #f8fafc;          /* Gris muy claro */
+  --neutral-medium: #64748b;         /* Gris medio */
+  --neutral-dark: #334155;           /* Gris oscuro */
+  
+  --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  --gradient-light: linear-gradient(135deg, var(--light-blue), var(--neutral-white));
+  
+  --shadow-blue: 0 4px 6px -1px rgba(30, 58, 138, 0.1);
+  --shadow-blue-lg: 0 10px 15px -3px rgba(30, 58, 138, 0.1);
+}
+
 /* --- Fondo general del cuerpo --- */
 body {
-  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;   /* Fuente profesional */
-  background-color: #ffffff;        /* Fondo blanco limpio */
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--neutral-white);
   line-height: 1.6;
-  color: #333333;
+  color: var(--neutral-dark);
 }
 
 /* --- Barra de navegación fija --- */
 .navbar {
-  display: flex;                   /* Coloca elementos en línea */
-  align-items: center;            /* Centra verticalmente */
-  justify-content: space-between;/* Espacia los elementos a los extremos */
-  padding: 12px 30px;             /* Espaciado interno */
-  background-color: white;        /* Fondo blanco */
-  position: fixed;                /* Fija arriba en la página */
-  top: 0;                         /* Posición superior 0 */
-  width: 100%;                    /* Ocupa todo el ancho */
-  z-index: 100;                   /* Se muestra encima de todo */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 30px;
+  background-color: var(--neutral-white);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: var(--shadow-blue);
+  border-bottom: 1px solid var(--light-blue);
 }
 
 /* --- Logo simple --- */
 .logo {
-  font-weight: bold;             /* Texto en negrita */
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--primary-blue);
+}
+
+/* --- Burger menu button --- */
+.burger-menu {
+  display: none;                 /* Oculto por defecto en desktop */
+  flex-direction: column;
+  cursor: pointer;
+  padding: 5px;
+  gap: 4px;
+}
+
+.burger-line {
+  width: 25px;
+  height: 3px;
+  background-color: var(--primary-blue);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Animación del burger menu */
+.burger-menu.active .burger-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-menu.active .burger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-menu.active .burger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* --- Menú de navegación --- */
@@ -37,28 +90,37 @@ body {
   display: flex;                 /* Enlaces en línea */
   gap: 15px;                     /* Espacio entre enlaces */
   font-size: 14px;               /* Tamaño de fuente */
+  align-items: center;
 }
 
 /* --- Enlaces del menú --- */
 .nav-links a {
-  text-decoration: none;        /* Quita subrayado */
-  color: black;                 /* Color negro */
-  transition: 0.3s;             /* Suaviza el hover */
+  text-decoration: none;
+  color: var(--neutral-dark);
+  transition: 0.3s;
+  font-weight: 500;
 }
 
 /* --- Hover en enlaces --- */
 .nav-links a:hover {
-  color: #007bff;               /* Azul al pasar el cursor */
+  color: var(--secondary-blue);
 }
 
 /* --- Botón de idioma --- */
 .language-switch {
-  font-size: 14px;              /* Tamaño de texto */
-  background: #000;             /* Fondo negro */
-  color: #fff;                  /* Texto blanco */
-  padding: 6px 10px;            /* Espaciado interno */
-  border-radius: 15px;          /* Bordes redondeados */
-  cursor: pointer;              /* Cambia a manito al pasar */
+  font-size: 14px;
+  background: var(--gradient-blue);
+  color: var(--neutral-white);
+  padding: 6px 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.language-switch:hover {
+  box-shadow: var(--shadow-blue);
+  transform: translateY(-1px);
 }
 
 /* --- Sección principal con fondo --- */
@@ -68,10 +130,11 @@ body {
   background-size: cover;                        /* Cubre todo el fondo */
   background-position: center;                   /* Centrado */
   position: relative;                            /* Para posicionar elementos internos */
-  padding-top: 100px;                            /* Espacio debajo del navbar */
+  padding: 100px 0 60px 0;                       /* Padding reducido para mantener contenido dentro */
   display: flex;                                 /* Contenedor flexible */
   flex-direction: column;                        /* Coloca hijos en columna */
-  justify-content: flex-start;                   /* Inicia desde arriba */
+  justify-content: space-between;                /* Separa overlay arriba y timer abajo */
+  align-items: flex-start;                       /* Alinea contenido a la izquierda */
 }
 
 /* Capa oscura encima del fondo */
@@ -92,53 +155,60 @@ body {
 
 /* --- Fondo blanco semitransparente para texto --- */
 .overlay {
-  background-color: rgba(255, 255, 255, 0.4);     /* Blanco transparente */
-  max-width: 600px;                              /* Máximo ancho del recuadro */
-  margin-left: 60px;                             /* Separación desde el borde izquierdo */
-  padding: 40px;                                 /* Espaciado interno */
-  border-radius: 8px;                            /* Bordes suaves */
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  max-width: 600px;
+  margin-left: 60px;
+  padding: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  border: 1px solid rgba(224, 242, 254, 0.6);
+  box-shadow: var(--shadow-blue-lg);
 }
 
 /* --- Título principal --- */
 .content h1 {
-  font-size: 2.5rem;                             /* Tamaño grande */
-  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; /* Fuente profesional */
-  font-weight: 600;                              /* Peso moderado */
-  color: #222;                                   /* Color oscuro */
-  line-height: 1.4;                              /* Altura entre líneas */
-  margin-bottom: 30px;                           /* Espacio inferior */
-  text-align: left;                              /* Alineado a la izquierda */
+  font-size: 2.5rem;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  color: var(--primary-blue);
+  line-height: 1.4;
+  margin-bottom: 30px;
+  text-align: left;
 }
 
 /* --- Subtítulos e info adicional --- */
 .subinfo {
-  font-size: 1rem;                               /* Tamaño normal */
-  color: #272727;                                   /* Gris oscuro */
-  margin-bottom: 5px;                            /* Espacio entre líneas */
-  text-align: left;                              /* Alineado a la izquierda */
+  font-size: 1rem;
+  color: var(--neutral-dark);
+  margin-bottom: 5px;
+  text-align: left;
 }
 
 /* --- Barra del temporizador --- */
 .timer-bar {
-  width: 100%;                                   /* Ocupa todo el ancho */
-  background-color: rgba(255, 255, 255, 0.6);   /* Blanco semitransparente */
-  padding: 25px 0;                               /* Alto mayor, sin padding lateral */
-  position: absolute;                            /* Posición relativa al padre */
-  bottom: 80px;                                  /* Subido desde el fondo */
-  text-align: center;                            /* Texto centrado */
+  width: 100%;
+  background: rgba(224, 242, 254, 0.4);
+  padding: 25px 0;
+  position: relative;
+  text-align: center;
+  margin-top: 40px;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(224, 242, 254, 0.6);
+  backdrop-filter: blur(8px);
 }
 
 /* --- Texto del temporizador --- */
 .timer-text {
-  font-weight: bold;                             /* Negrita */
-  font-size: 1.2rem;                             /* Tamaño medio */
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--primary-blue);
 }
-
 
 /* --- Sección de tarjetas informativas --- */
 .info-section {
-  background-color: #f8f9fa;              /* Fondo gris muy claro */
-  padding: 80px 40px 60px 40px;           /* Espaciado limpio */
+  background: var(--gradient-light);
+  padding: 80px 40px 60px 40px;
 }
 
 .info-cards {
@@ -150,19 +220,20 @@ body {
 }
 
 .card {
-  background: #ffffff;                    /* Fondo blanco limpio */
-  padding: 30px 20px;                     /* Espaciado más compacto */
+  background: var(--neutral-white);
+  padding: 30px 20px;
   text-align: center;
-  border-radius: 8px;                     /* Bordes suaves pero no excesivos */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Sombra sutil */
-  transition: all 0.3s ease;              /* Transición suave */
-  border: 1px solid #e9ecef;              /* Borde sutil */
+  border-radius: 8px;
+  box-shadow: var(--shadow-blue);
+  transition: all 0.3s ease;
+  border: 1px solid var(--light-blue);
 }
 
 /* Efecto hover minimalista */
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-blue-lg);
+  border-color: var(--secondary-blue);
 }
 
 .card img {
@@ -182,20 +253,20 @@ body {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 15px;
-  color: #2c3e50;
+  color: var(--primary-blue);
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .card p {
   font-size: 1rem;
-  color: #6c757d;
+  color: var(--neutral-medium);
   line-height: 1.6;
   font-weight: 400;
 }
 
 /* --- Sección About con curva superior --- */
 .about-section {
-  background-color: #ffffff;              /* Fondo blanco limpio */
+  background-color: var(--neutral-white);
   padding: 100px 40px;
   border-top-left-radius: 100% 50px;      /* Curvas suaves */
   border-top-right-radius: 100% 50px;
@@ -206,7 +277,7 @@ body {
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 60px;
-  color: #2c3e50;
+  color: var(--primary-blue);
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: 0.5px;
 }
@@ -223,7 +294,7 @@ body {
 .about-content p {
   text-align: left;
   font-size: 1.1rem;
-  color: #555555;
+  color: var(--neutral-dark);
   line-height: 1.8;
   font-weight: 400;
   padding: 0;
@@ -233,8 +304,9 @@ body {
   width: 100%;
   max-width: 350px;
   border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-blue-lg);
   transition: transform 0.3s ease;
+  border: 2px solid var(--light-blue);
 }
 
 .about-content img:hover {
@@ -242,7 +314,7 @@ body {
 }
 
 .speakers-section {
-  background-color: #f8f9fa;
+  background: var(--gradient-light);
   padding: 80px 40px;
   text-align: center;
 }
@@ -251,7 +323,7 @@ body {
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 40px;
-  color: #2c3e50;
+  color: var(--primary-blue);
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -298,8 +370,8 @@ body {
 }
 
 .speaker-info p {
-  font-size: 1.1rem; /* más grande */
-  color: #333;
+  font-size: 1.1rem;
+  color: var(--neutral-dark);
   margin: 4px 0;
   text-align: left;
 }
@@ -310,41 +382,27 @@ body {
 
 .view-all-button button {
   padding: 12px 24px;
-  background-color: #e0e0e0;
+  background: var(--gradient-blue);
   border: none;
   border-radius: 4px;
   font-size: 1rem;
+  color: var(--neutral-white);
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-}
-
-.view-all-button button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-  transition: left 0.6s;
-}
-
-.view-all-button button:hover::before {
-  left: 100%;
+  font-weight: 600;
 }
 
 .view-all-button button:hover {
-  background-color: #2c3e50;
-  color: white;
+  background: var(--dark-blue);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-blue-lg);
 }
 
 /* --- Sección de SILABUS --- */
 .syllabus-section {
-  background-color: #ffffff;
+  background-color: var(--neutral-white);
   padding: 80px 40px;
   text-align: center;
 }
@@ -352,14 +410,14 @@ body {
 .syllabus-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--primary-blue);
   margin-bottom: 60px;
   letter-spacing: 1px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .syllabus-pdf-placeholder {
-  background-color: #e9ecef;
+  background: var(--gradient-light);
   width: 400px;
   height: 300px;
   margin: 0 auto;
@@ -367,21 +425,22 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-blue);
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 1px solid #dee2e6;
+  border: 2px solid var(--light-blue);
 }
 
 .syllabus-pdf-placeholder:hover {
-  background-color: #dee2e6;
+  background: var(--light-blue);
+  border-color: var(--secondary-blue);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-blue-lg);
 }
 
 .syllabus-pdf-placeholder span {
   font-size: 1.5rem;
-  color: #6c757d;
+  color: var(--neutral-medium);
   font-weight: 400;
   letter-spacing: 2px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -475,7 +534,7 @@ body {
 
 /* --- Sección de SCHEDULE --- */
 .schedule-section {
-  background-color: #f8f9fa;
+  background: var(--gradient-light);
   padding: 80px 40px;
   text-align: center;
 }
@@ -483,21 +542,21 @@ body {
 .schedule-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--primary-blue);
   margin-bottom: 60px;
   letter-spacing: 1px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .schedule-placeholder {
-  background-color: #e9ecef;
+  background: var(--neutral-white);
   width: 100%;
   max-width: 800px;
   height: 400px;
   margin: 0 auto;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border: 1px solid #dee2e6;
+  box-shadow: var(--shadow-blue);
+  border: 2px solid var(--light-blue);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -505,14 +564,15 @@ body {
 }
 
 .schedule-placeholder:hover {
-  background-color: #dee2e6;
+  background: var(--light-blue);
+  border-color: var(--secondary-blue);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-blue-lg);
 }
 
 /* --- Sección de SPONSORS --- */
 .sponsors-section {
-  background-color: #ffffff;
+  background-color: var(--neutral-white);
   padding: 80px 40px;
   text-align: center;
 }
@@ -520,7 +580,7 @@ body {
 .sponsors-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--primary-blue);
   margin-bottom: 60px;
   letter-spacing: 1px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -545,30 +605,31 @@ body {
 .sponsor-logo {
   width: 150px;
   height: 100px;
-  background-color: #e9ecef;
+  background: var(--gradient-light);
   border-radius: 8px;
-  border: 1px solid #dee2e6;
+  border: 2px solid var(--light-blue);
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-blue);
 }
 
 .sponsor-logo:hover {
-  background-color: #dee2e6;
+  background: var(--light-blue);
+  border-color: var(--secondary-blue);
   transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-blue-lg);
 }
 
 .sponsor-item p {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--primary-blue);
   margin: 0;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* --- Sección de DATES --- */
 .dates-section {
-  background-color: #f8f9fa;
+  background: var(--gradient-light);
   padding: 80px 40px;
   text-align: center;
 }
@@ -576,7 +637,7 @@ body {
 .dates-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--primary-blue);
   margin-bottom: 60px;
   letter-spacing: 1px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -590,45 +651,47 @@ body {
 }
 
 .date-card {
-  background-color: #ffffff;
+  background-color: var(--neutral-white);
   padding: 40px 20px;
   width: 200px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-blue);
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid var(--light-blue);
 }
 
 .date-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow-blue-lg);
+  border-color: var(--secondary-blue);
 }
 
 .date-day {
   font-size: 3rem;
   font-weight: bold;
-  color: #333;
+  color: var(--primary-blue);
 }
 
 .date-month {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #333;
+  color: var(--secondary-blue);
   margin-top: 5px;
 }
 
 .date-desc {
   margin-top: 20px;
   font-size: 1rem;
-  color: #666;
+  color: var(--neutral-medium);
   text-align: center;
 }
 
 /* --- Sección de FAQ --- */
 .faq-section {
-  background-color: #ffffff;
+  background-color: var(--neutral-white);
   padding: 80px 40px;
   text-align: center;
 }
@@ -636,7 +699,7 @@ body {
 .faq-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--primary-blue);
   margin-bottom: 60px;
   letter-spacing: 1px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -658,13 +721,13 @@ body {
 .faq-question {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--primary-blue);
   margin-bottom: 10px;
 }
 
 .faq-answer {
   font-size: 1rem;
-  color: #555555;
+  color: var(--neutral-dark);
   line-height: 1.6;
 }
 
@@ -677,7 +740,7 @@ body {
 /* --- Sección de VENUE --- */
 
 .venue-section {
-  background-color: #f8f9fa;
+  background: var(--gradient-light);
   padding: 80px 40px;
   text-align: center;
 }
@@ -685,7 +748,7 @@ body {
 .venue-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--primary-blue);
   margin-bottom: 40px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
@@ -710,9 +773,10 @@ body {
   flex-shrink: 0;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  background: #fff;
+  box-shadow: var(--shadow-blue-lg);
+  background: var(--neutral-white);
   transition: transform 0.3s ease;
+  border: 2px solid var(--light-blue);
 }
 
 .carousel-item img {
@@ -727,17 +791,18 @@ body {
 }
 
 .site-footer {
-  background-color: #444;
-  color: white;
-  padding: 10px 40px 20px;
+  background: var(--gradient-blue);
+  color: var(--neutral-white);
+  padding: 40px 40px 0;                          /* Sin padding bottom */
   font-family: 'Segoe UI', 'Roboto', sans-serif;
 }
 
 .footer-content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;                       /* Alineación superior */
   flex-wrap: wrap;
+  margin-bottom: 40px;                           /* Espacio antes del footer-bottom */
 }
 
 .footer-left h3 {
@@ -747,31 +812,33 @@ body {
 
 .footer-separator {
   width: 5px;
-  height: 300px;
+  height: 200px;                                 /* Altura reducida */
   background-color: #ccc;
-  margin: 0 160px;
+  margin: 0 80px;                                /* Márgenes reducidos */
 }
 
 .footer-contacts {
-  flex: 20px;
+  flex: 1;                                       /* Toma espacio disponible */
 }
 
 .footer-contacts h2 {
-  margin-bottom: 10px;
+  margin-bottom: 20px;                           /* Más espacio debajo del título */
   font-size: 2rem;
 }
 
 .contact-cards {
   display: flex;
-  gap: 40px;
+  gap: 60px;                                     /* Mayor separación entre contactos */
   flex-wrap: wrap;
+  align-items: flex-start;                       /* Alineación superior */
 }
 
 .contact-person {
   display: flex;
   flex-direction: column;
-  align-items: center ;
+  align-items: center;
   text-align: center;
+  min-width: 120px;                              /* Ancho mínimo consistente */
 }
 
 .avatar-circle {
@@ -804,17 +871,20 @@ body {
   color: #aaa;
 }
 
-/* Footer bottom bar */
+/* --- Footer bottom bar */
 .footer-bottom {
   background-color: white;
   color: #333;
-  margin-top: 40px;
-  padding: 15px 20px;
+  margin: 0 -40px;                               /* Extiende hasta los bordes */
+  padding: 15px 40px;                            /* Padding interno */
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   font-size: 0.9rem;
+  width: calc(100% + 80px);                      /* Ancho completo más los márgenes */
+  position: relative;
+  left: 0;
 }
 
 .footer-links {
@@ -825,13 +895,13 @@ body {
 }
 
 .footer-links a {
-  color: #333;
+  color: #333;                                   /* Negro para la parte blanca */
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .footer-links a:hover {
-  color: #007bff;
+  color: var(--secondary-blue);
 }
 
 /* --- Scroll suave para toda la página --- */
@@ -881,6 +951,24 @@ body {
 
 /* --- Responsive design --- */
 @media (max-width: 1024px) {
+  .navbar {
+    padding: 12px 20px;
+  }
+  
+  .overlay {
+    margin-left: 40px;
+    margin-right: 40px;
+    max-width: 500px;
+  }
+  
+  .content h1 {
+    font-size: 2.2rem;
+  }
+  
+  .info-section {
+    padding: 60px 20px 40px 20px;
+  }
+  
   .info-cards {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
@@ -906,44 +994,107 @@ body {
 }
 
 @media (max-width: 768px) {
+  /* --- Navbar móvil --- */
   .navbar {
-    flex-direction: column;
-    padding: 10px;
+    padding: 12px 20px;
+    position: relative;
+  }
+  
+  .burger-menu {
+    display: flex;               /* Mostrar burger en móvil */
   }
   
   .nav-links {
-    margin-top: 10px;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
+    position: fixed;
+    top: 60px;                   /* Debajo del navbar */
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);  /* Altura completa menos navbar */
+    background-color: var(--neutral-white);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 50px;
+    gap: 30px;
+    font-size: 18px;
+    transform: translateX(-100%); /* Oculto por defecto */
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    z-index: 99;
   }
   
+  .nav-links.active {
+    transform: translateX(0);    /* Mostrar cuando está activo */
+  }
+  
+  .nav-links a {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--light-blue);
+    width: 80%;
+    text-align: center;
+  }
+  
+  .language-switch {
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+  
+  /* --- Hero móvil --- */
   .hero {
-    height: 80vh;
-    padding-top: 120px;
+    height: 100vh;
+    padding: 80px 0 40px 0;
+    justify-content: space-between;
   }
   
   .overlay {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 0 20px;
     padding: 20px;
+    max-width: none;
   }
   
   .content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .subinfo {
+    font-size: 0.9rem;
+  }
+  
+  .timer-bar {
+    margin-top: 20px;
+    padding: 20px 0;
+  }
+  
+  .timer-text {
+    font-size: 1rem;
+  }
+  
+  /* --- Secciones móviles --- */
+  .info-section,
+  .about-section,
+  .speakers-section,
+  .syllabus-section,
+  .schedule-section,
+  .sponsors-section,
+  .dates-section,
+  .faq-section,
+  .venue-section {
+    padding: 60px 20px;
+  }
+  
+  .info-section h2,
+  .about-section h2,
+  .speakers-section h2,
+  .syllabus-section h2,
+  .schedule-section h2,
+  .sponsors-section h2,
+  .dates-section h2,
+  .faq-section h2,
+  .venue-section h2 {
     font-size: 2rem;
-  }
-  
-  .info-section {
-    padding: 60px 20px 40px 20px;
-  }
-  
-  .info-cards {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-  
-  .card {
-    padding: 20px 15px;
+    margin-bottom: 40px;
   }
   
   .card h3 {
@@ -1017,53 +1168,206 @@ body {
 }
 
 @media (max-width: 480px) {
-  .info-cards {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .navbar {
+    padding: 10px 15px;
   }
   
-  .card {
-    padding: 25px 20px;
-  }
-  
-  .card h3 {
-    font-size: 1.2rem;
-  }
-  
-  .card p {
+  .logo {
     font-size: 1rem;
+  }
+  
+  .burger-line {
+    width: 20px;
+    height: 2px;
   }
   
   .nav-links {
-    font-size: 12px;
-    gap: 8px;
+    top: 50px;
+    height: calc(100vh - 50px);
+    padding-top: 30px;
+    gap: 25px;
+    font-size: 16px;
   }
   
-  .content h1 {
-    font-size: 1.8rem;
+  .hero {
+    padding: 70px 0 30px 0;
   }
   
   .overlay {
-    margin: 20px;
+    margin: 0 15px;
     padding: 15px;
   }
   
-  .schedule-placeholder {
-    height: 250px;
+  .content h1 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+  
+  .subinfo {
+    font-size: 0.85rem;
+  }
+  
+  .timer-text {
+    font-size: 0.9rem;
+  }
+  
+  /* --- Secciones extra pequeñas --- */
+  .info-section,
+  .about-section,
+  .speakers-section,
+  .syllabus-section,
+  .schedule-section,
+  .sponsors-section,
+  .dates-section,
+  .faq-section,
+  .venue-section {
+    padding: 40px 15px;
+  }
+  
+  .info-section h2,
+  .about-section h2,
+  .speakers-section h2,
+  .syllabus-section h2,
+  .schedule-section h2,
+  .sponsors-section h2,
+  .dates-section h2,
+  .faq-section h2,
+  .venue-section h2 {
+    font-size: 1.7rem;
+    margin-bottom: 30px;
+  }
+  
+  .card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .card p {
+    font-size: 0.9rem;
+  }
+  
+  .about-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .speaker-info p {
+    font-size: 1rem;
+  }
+  
+  .dates-grid {
+    gap: 20px;
+  }
+  
+  .date-card {
+    width: 160px;
+    padding: 30px 15px;
+  }
+  
+  .date-day {
+    font-size: 2.5rem;
+  }
+  
+  .date-month {
+    font-size: 1.2rem;
+  }
+  
+  .carousel-item {
+    min-width: 250px;
+  }
+  
+  .carousel-item img {
+    height: 300px;
+  }
+  
+  /* --- Footer móvil --- */
+  .site-footer {
+    padding: 30px 20px 0;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .footer-separator {
+    display: none;
+  }
+  
+  .contact-cards {
+    justify-content: center;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .overlay {
+    margin: 0 10px;
+    padding: 12px;
+  }
+  
+  .content h1 {
+    font-size: 1.4rem;
+  }
+  
+  .info-cards,
+  .speakers-grid,
+  .sponsors-grid {
+    gap: 15px;
+  }
+  
+  .card {
+    padding: 20px 15px;
   }
   
   .syllabus-pdf-placeholder {
-    width: 250px;
-    height: 180px;
+    width: 200px;
+    height: 150px;
   }
   
-  .sponsor-logo {
-    width: 80px;
-    height: 60px;
+  .schedule-placeholder {
+    height: 200px;
+  }
+}
+
+/* --- Animaciones responsivas --- */
+@media (max-width: 768px) {
+  .card,
+  .speaker-card,
+  .date-card,
+  .sponsor-item {
+    animation-duration: 0.5s;
+  }
+}
+
+/* --- Mejoras de accesibilidad --- */
+@media (prefers-reduced-motion: reduce) {
+  .burger-menu,
+  .nav-links,
+  .burger-line {
+    transition: none;
+  }
+}
+
+/* --- Landscape móvil --- */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    height: 100vh;
+    padding: 60px 0 30px 0;
   }
   
-  .sponsor-item p {
-    font-size: 1rem;
+  .overlay {
+    padding: 15px;
+  }
+  
+  .content h1 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+  
+  .timer-bar {
+    margin-top: 15px;
+    padding: 15px 0;
   }
 }
 
