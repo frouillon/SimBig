@@ -43,11 +43,11 @@
           </div>
       </div>
       <div class="timer-bar">
-          <div class="timer-text" data-i18n="timer">TIMER 99 days &nbsp; 24h &nbsp; 60 min &nbsp; 60 seconds</div>
+          <div class="timer-text" id="timer-bar-text">TIMER -- días --h --min --s</div>
       </div>
+
   </section>
   <!-- Sección informativa debajo del hero -->
-
     <section id="information" class="info-section">
     <div class="info-cards">
         <div class="card">
@@ -443,6 +443,31 @@
       });
   </script>
 
+  <script>
+      function updateCountdown() {
+          const eventDate = new Date('2025-10-29T00:00:00').getTime(); // Fecha del evento
+          const now = new Date().getTime();
+          const timeLeft = eventDate - now;
+
+          const timerText = document.getElementById('timer-bar-text');
+
+          if (timeLeft <= 0) {
+              timerText.textContent = '¡The event has started!';
+              return;
+          }
+
+          const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+          timerText.textContent = `TIMER ${days} DAYS ${hours} HOURS ${minutes} MINUTE  ${seconds} SECONDS`;
+      }
+
+      // Actualizar cada segundo
+      setInterval(updateCountdown, 1000);
+      updateCountdown(); // Ejecutar inmediatamente al cargar
+  </script>
 </body>
 
 </html>
