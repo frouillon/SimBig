@@ -92,7 +92,7 @@ body {
 
 /* --- Fondo blanco semitransparente para texto --- */
 .overlay {
-  background-color: rgba(255, 255, 255, 0.6);     /* Blanco transparente */
+  background-color: rgba(255, 255, 255, 0.4);     /* Blanco transparente */
   max-width: 600px;                              /* Máximo ancho del recuadro */
   margin-left: 60px;                             /* Separación desde el borde izquierdo */
   padding: 40px;                                 /* Espaciado interno */
@@ -113,7 +113,7 @@ body {
 /* --- Subtítulos e info adicional --- */
 .subinfo {
   font-size: 1rem;                               /* Tamaño normal */
-  color: #333;                                   /* Gris oscuro */
+  color: #272727;                                   /* Gris oscuro */
   margin-bottom: 5px;                            /* Espacio entre líneas */
   text-align: left;                              /* Alineado a la izquierda */
 }
@@ -566,6 +566,274 @@ body {
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
+/* --- Sección de DATES --- */
+.dates-section {
+  background-color: #f8f9fa;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.dates-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 60px;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.dates-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.date-card {
+  background-color: #ffffff;
+  padding: 40px 20px;
+  width: 200px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.date-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.date-day {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.date-month {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 5px;
+}
+
+.date-desc {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #666;
+  text-align: center;
+}
+
+/* --- Sección de FAQ --- */
+.faq-section {
+  background-color: #ffffff;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.faq-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 60px;
+  letter-spacing: 1px;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.faq-item {
+  margin-bottom: 30px;
+}
+
+.faq-question {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.faq-answer {
+  font-size: 1rem;
+  color: #555555;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Sección de VENUE --- */
+
+.venue-section {
+  background-color: #f8f9fa;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.venue-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.carousel-container {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  gap: 20px;
+  padding-bottom: 10px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 70px;
+}
+
+.carousel-item {
+  scroll-snap-align: start;
+  min-width: 300px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  background: #fff;
+  transition: transform 0.3s ease;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-item:hover {
+  transform: scale(1.03);
+}
+
+.site-footer {
+  background-color: #444;
+  color: white;
+  padding: 10px 40px 20px;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-left h3 {
+  font-size: 1.8rem;
+  line-height: 1.6;
+}
+
+.footer-separator {
+  width: 5px;
+  height: 300px;
+  background-color: #ccc;
+  margin: 0 160px;
+}
+
+.footer-contacts {
+  flex: 20px;
+}
+
+.footer-contacts h2 {
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.contact-cards {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-person {
+  display: flex;
+  flex-direction: column;
+  align-items: center ;
+  text-align: center;
+}
+
+.avatar-circle {
+  width: 100px;
+  height: 100px;
+  background-color: #000;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 4px solid #fff;
+}
+
+.contact-name {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.contact-desc {
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.contact-icons a {
+  color: white;
+  margin: 0 6px;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.contact-icons a:hover {
+  color: #aaa;
+}
+
+/* Footer bottom bar */
+.footer-bottom {
+  background-color: white;
+  color: #333;
+  margin-top: 40px;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #007bff;
+}
+
 /* --- Scroll suave para toda la página --- */
 html {
   scroll-behavior: smooth;
@@ -585,6 +853,7 @@ html {
 }
 
 /* --- Mejoras en animaciones responsivas --- */
+
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,
@@ -596,6 +865,7 @@ html {
 }
 
 /* --- Animación de carga inicial --- */
+
 body {
   animation: fadeIn 1s ease-out;
 }
@@ -796,4 +1066,5 @@ body {
     font-size: 1rem;
   }
 }
+
 
