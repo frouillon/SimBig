@@ -1,28 +1,40 @@
 /* --- Reset general para todo --- */
 * {
-  margin: 0;                     /* Quita márgenes por defecto */
-  padding: 0;                    /* Quita relleno por defecto */
-  box-sizing: border-box;       /* Incluye borde y padding en el tamaño total */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* --- Variables de colores profesionales --- */
+/* --- Variables de colores inspiradas en el paisaje urbano de Lima --- */
 :root {
-  --primary-blue: #1e3a8a;           /* Azul principal */
-  --secondary-blue: #3b82f6;         /* Azul secundario */
-  --light-blue: #e0f2fe;             /* Azul claro */
-  --accent-blue: #0ea5e9;            /* Azul de acento */
-  --dark-blue: #1e40af;              /* Azul oscuro */
+  --primary-blue: #1a365d;           /* Azul profundo de rascacielos */
+  --secondary-blue: #2563eb;         /* Azul vibrante de vidrios */
+  --light-blue: #dbeafe;             /* Azul claro del cielo */
+  --accent-blue: #0ea5e9;            /* Azul cielo brillante */
+  --dark-blue: #0f172a;              /* Azul navy oscuro */
+  --steel-blue: #475569;             /* Azul acero de edificios */
   
-  --neutral-white: #ffffff;          /* Blanco puro */
-  --neutral-light: #f8fafc;          /* Gris muy claro */
-  --neutral-medium: #64748b;         /* Gris medio */
-  --neutral-dark: #334155;           /* Gris oscuro */
+  --urban-teal: #0d9488;             /* Verde azulado urbano */
+  --vibrant-cyan: #06b6d4;           /* Cian vibrante */
+  --electric-blue: #3b82f6;          /* Azul eléctrico */
   
-  --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  --neutral-white: #ffffff;
+  --neutral-light: #f1f5f9;
+  --neutral-medium: #64748b;
+  --neutral-dark: #1e293b;
+  
+  /* Gradientes inspirados en la arquitectura moderna */
+  --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--electric-blue));
+  --gradient-urban: linear-gradient(135deg, var(--steel-blue), var(--vibrant-cyan));
   --gradient-light: linear-gradient(135deg, var(--light-blue), var(--neutral-white));
+  --gradient-glass: linear-gradient(135deg, var(--accent-blue), var(--urban-teal));
+  --gradient-modern: linear-gradient(135deg, var(--dark-blue), var(--primary-blue), var(--steel-blue));
   
-  --shadow-blue: 0 4px 6px -1px rgba(30, 58, 138, 0.1);
-  --shadow-blue-lg: 0 10px 15px -3px rgba(30, 58, 138, 0.1);
+  /* Sombras con tonos urbanos */
+  --shadow-blue: 0 4px 6px -1px rgba(37, 99, 235, 0.15);
+  --shadow-blue-lg: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
+  --shadow-urban: 0 4px 12px rgba(13, 148, 136, 0.15);
+  --shadow-glass: 0 6px 20px rgba(6, 182, 212, 0.2);
 }
 
 /* --- Fondo general del cuerpo --- */
@@ -33,26 +45,27 @@ body {
   color: var(--neutral-dark);
 }
 
-/* --- Barra de navegación fija --- */
+/* --- Barra de navegación fija con fondo oscuro --- */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 12px 30px;
-  background-color: var(--neutral-white);
+  background: var(--gradient-modern);
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 100;
-  box-shadow: var(--shadow-blue);
-  border-bottom: 1px solid var(--light-blue);
+  box-shadow: var(--shadow-glass);
+  border-bottom: 2px solid var(--vibrant-cyan);
 }
 
-/* --- Logo simple --- */
+/* --- Logo con colores urbanos --- */
 .logo {
   font-weight: bold;
   font-size: 1.2rem;
-  color: var(--primary-blue);
+  color: var(--neutral-white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* --- Burger menu button --- */
@@ -67,7 +80,7 @@ body {
 .burger-line {
   width: 25px;
   height: 3px;
-  background-color: var(--primary-blue);
+  background-color: var(--neutral-white);
   transition: all 0.3s ease;
   border-radius: 2px;
 }
@@ -93,34 +106,35 @@ body {
   align-items: center;
 }
 
-/* --- Enlaces del menú --- */
+/* --- Enlaces del menú con estilo moderno --- */
 .nav-links a {
   text-decoration: none;
-  color: var(--neutral-dark);
+  color: var(--neutral-white);
   transition: 0.3s;
   font-weight: 500;
 }
 
-/* --- Hover en enlaces --- */
+/* --- Hover en enlaces con tonos urbanos --- */
 .nav-links a:hover {
-  color: var(--secondary-blue);
+  color: var(--vibrant-cyan);
 }
 
-/* --- Botón de idioma --- */
+/* --- Botón de idioma con gradiente urbano --- */
 .language-switch {
   font-size: 14px;
-  background: var(--gradient-blue);
+  background: var(--gradient-glass);
   color: var(--neutral-white);
   padding: 6px 10px;
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .language-switch:hover {
-  box-shadow: var(--shadow-blue);
+  box-shadow: var(--shadow-glass);
   transform: translateY(-1px);
+  background: var(--gradient-urban);
 }
 
 /* --- Sección principal con fondo --- */
@@ -153,7 +167,7 @@ body {
   z-index: 1;
 }
 
-/* --- Fondo blanco semitransparente para texto --- */
+/* --- Fondo mejorado para texto con tonos urbanos --- */
 .overlay {
   background-color: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
@@ -162,47 +176,51 @@ body {
   padding: 40px;
   border-radius: 8px;
   flex-shrink: 0;
-  border: 1px solid rgba(224, 242, 254, 0.6);
-  box-shadow: var(--shadow-blue-lg);
+  border: 2px solid var(--vibrant-cyan);
+  box-shadow: var(--shadow-glass);
 }
 
-/* --- Título principal --- */
+/* --- Título principal con gradiente urbano --- */
 .content h1 {
   font-size: 2.5rem;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 600;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1.4;
   margin-bottom: 30px;
   text-align: left;
 }
 
-/* --- Subtítulos e info adicional --- */
+/* --- Subtítulos con colores modernos --- */
 .subinfo {
   font-size: 1rem;
-  color: var(--neutral-dark);
+  color: var(--steel-blue);
   margin-bottom: 5px;
   text-align: left;
 }
 
-/* --- Barra del temporizador --- */
+/* --- Barra del temporizador con gradiente --- */
 .timer-bar {
   width: 100%;
-  background: rgba(224, 242, 254, 0.4);
+  background: linear-gradient(90deg, rgba(219, 234, 254, 0.6), rgba(6, 182, 212, 0.2));
   padding: 25px 0;
   position: relative;
   text-align: center;
   margin-top: 40px;
   flex-shrink: 0;
-  border-top: 1px solid rgba(224, 242, 254, 0.6);
+  border-top: 2px solid var(--vibrant-cyan);
   backdrop-filter: blur(8px);
 }
 
-/* --- Texto del temporizador --- */
+/* --- Texto del temporizador con color más notorio --- */
 .timer-text {
   font-weight: bold;
   font-size: 1.2rem;
-  color: var(--primary-blue);
+  color: var(--vibrant-cyan);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* --- Sección de tarjetas informativas --- */
@@ -232,8 +250,8 @@ body {
 /* Efecto hover minimalista */
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-blue-lg);
-  border-color: var(--secondary-blue);
+  box-shadow: var(--shadow-glass);
+  border-color: var(--vibrant-cyan);
 }
 
 .card img {
@@ -247,19 +265,23 @@ body {
 
 .card:hover img {
   transform: scale(1.05);
+  border-color: var(--urban-teal);
 }
 
 .card h3 {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 15px;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
 .card p {
   font-size: 1rem;
-  color: var(--neutral-medium);
+  color: var(--steel-blue);
   line-height: 1.6;
   font-weight: 400;
 }
@@ -277,7 +299,10 @@ body {
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 60px;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: 0.5px;
 }
@@ -332,7 +357,10 @@ body {
   font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 40px;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -383,18 +411,21 @@ body {
 .speaker-info h3 {
   font-size: 1.5rem;
   margin-bottom: 8px;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .speaker-role {
   font-weight: 600;
-  color: var(--secondary-blue);
+  color: var(--vibrant-cyan);
   margin-bottom: 10px;
 }
 
 .speaker-bio {
   margin-bottom: 12px;
-  color: var(--neutral-dark);
+  color: var(--steel-blue);
   line-height: 1.5;
 }
 
@@ -444,7 +475,10 @@ body {
 .syllabus-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 60px;
   letter-spacing: 1px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -467,14 +501,14 @@ body {
 
 .syllabus-pdf-placeholder:hover {
   background: var(--light-blue);
-  border-color: var(--secondary-blue);
+  border-color: var(--vibrant-cyan);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-blue-lg);
+  box-shadow: var(--shadow-glass);
 }
 
 .syllabus-pdf-placeholder span {
   font-size: 1.5rem;
-  color: var(--neutral-medium);
+  color: var(--steel-blue);
   font-weight: 400;
   letter-spacing: 2px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -578,7 +612,10 @@ body {
 .schedule-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 60px;
   letter-spacing: 1px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -601,9 +638,9 @@ body {
 
 .schedule-placeholder:hover {
   background: var(--light-blue);
-  border-color: var(--secondary-blue);
+  border-color: var(--vibrant-cyan);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-blue-lg);
+  box-shadow: var(--shadow-glass);
 }
 
 /* --- Sección de SPONSORS --- */
@@ -616,7 +653,10 @@ body {
 .sponsors-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 60px;
   letter-spacing: 1px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -645,9 +685,9 @@ body {
 
 .sponsor-logo:hover {
   background: var(--light-blue);
-  border-color: var(--secondary-blue);
+  border-color: var(--vibrant-cyan);
   transform: translateY(-4px);
-  box-shadow: var(--shadow-blue-lg);
+  box-shadow: var(--shadow-glass);
 }
 
 .sponsor-item p {
@@ -683,7 +723,10 @@ body {
 .dates-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 60px;
   letter-spacing: 1px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -711,27 +754,30 @@ body {
 
 .date-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-blue-lg);
-  border-color: var(--secondary-blue);
+  box-shadow: var(--shadow-glass);
+  border-color: var(--urban-teal);
 }
 
 .date-day {
   font-size: 3rem;
   font-weight: bold;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .date-month {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--secondary-blue);
+  color: var(--vibrant-cyan);
   margin-top: 5px;
 }
 
 .date-desc {
   margin-top: 20px;
   font-size: 1rem;
-  color: var(--neutral-medium);
+  color: var(--steel-blue);
   text-align: center;
 }
 
@@ -745,7 +791,10 @@ body {
 .faq-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 60px;
   letter-spacing: 1px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -767,20 +816,17 @@ body {
 .faq-question {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 10px;
 }
 
 .faq-answer {
   font-size: 1rem;
-  color: var(--neutral-dark);
+  color: var(--steel-blue);
   line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-  .faq-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* --- Sección de VENUE --- */
@@ -794,7 +840,10 @@ body {
 .venue-title {
   font-size: 2.5rem;
   font-weight: 600;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 40px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
@@ -839,7 +888,7 @@ body {
 /* --- Sección de Contact Us --- */
 
 .site-footer {
-  background: var(--gradient-blue);
+  background: var(--gradient-modern);
   color: var(--neutral-white);
   padding: 40px 40px 0;
   font-family: 'Segoe UI', 'Roboto', sans-serif;
@@ -882,18 +931,18 @@ body {
   line-height: 1.6;
 }
 
-/* --- Footer bottom bar */
+/* --- Footer bottom bar con gradiente suave --- */
 .footer-bottom {
-  background-color: white;
-  color: #333;
-  margin: 0 -40px;                               /* Extiende hasta los bordes */
-  padding: 15px 40px;                            /* Padding interno */
+  background: linear-gradient(90deg, var(--neutral-white), var(--light-blue));
+  color: var(--steel-blue);
+  margin: 0 -40px;
+  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   font-size: 0.9rem;
-  width: calc(100% + 80px);                      /* Ancho completo más los márgenes */
+  width: calc(100% + 80px);
   position: relative;
   left: 0;
 }
@@ -906,13 +955,13 @@ body {
 }
 
 .footer-links a {
-  color: #333;                                   /* Negro para la parte blanca */
+  color: var(--steel-blue);
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .footer-links a:hover {
-  color: var(--secondary-blue);
+  color: var(--vibrant-cyan);
 }
 
 /* --- Sección de ORGANIZERS --- */
@@ -925,7 +974,10 @@ body {
 .organizers-section h2 {
   font-size: 2.5rem;
   font-weight: 600;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 60px;
   letter-spacing: 1px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
@@ -954,17 +1006,17 @@ body {
 
 .organizer-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-blue-lg);
-  border-color: var(--secondary-blue);
+  box-shadow: var(--shadow-glass);
+  border-color: var(--vibrant-cyan);
 }
 
 .organizer-photo {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background-color: var(--neutral-medium);
+  background-color: var(--steel-blue);
   margin-bottom: 20px;
-  border: 3px solid var(--light-blue);
+  border: 3px solid var(--urban-teal);
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
@@ -980,14 +1032,18 @@ body {
 }
 
 .organizer-card:hover .organizer-photo {
-  border-color: var(--secondary-blue);
+  border-color: var(--vibrant-cyan);
   transform: scale(1.05);
+  box-shadow: var(--shadow-urban);
 }
 
 .organizer-name {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--primary-blue);
+  background: var(--gradient-urban);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 8px;
   font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
@@ -995,13 +1051,13 @@ body {
 .organizer-role {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--secondary-blue);
+  color: var(--vibrant-cyan);
   margin-bottom: 5px;
 }
 
 .organizer-institution {
   font-size: 0.9rem;
-  color: var(--neutral-dark);
+  color: var(--steel-blue);
   margin-bottom: 5px;
   font-weight: 500;
 }
@@ -1027,7 +1083,7 @@ body {
 }
 
 .organizer-socials a:hover {
-  color: var(--secondary-blue);
+  color: var(--vibrant-cyan);
   transform: scale(1.2);
   background-color: var(--light-blue);
 }
@@ -1512,4 +1568,3 @@ body {
 html {
   scroll-behavior: smooth;
 }
-
