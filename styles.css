@@ -35,6 +35,8 @@
   --shadow-blue-lg: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
   --shadow-urban: 0 4px 12px rgba(13, 148, 136, 0.15);
   --shadow-glass: 0 6px 20px rgba(6, 182, 212, 0.2);
+
+
 }
 
 /* --- Fondo general del cuerpo --- */
@@ -66,6 +68,13 @@ body {
   font-size: 1.2rem;
   color: var(--neutral-white);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo-img {
+  height: 50px;
+  width: 150px; /* o el tamaño cuadrado que desees mostrar */
+  object-position: center; /* O ajusta: left, right, bottom */
+  overflow: hidden;
 }
 
 /* --- Burger menu button --- */
@@ -119,23 +128,58 @@ body {
   color: var(--vibrant-cyan);
 }
 
-/* --- Botón de idioma con gradiente urbano --- */
 .language-switch {
   font-size: 14px;
-  background: var(--gradient-glass);
+  background: var(--gradient-urban);
   color: var(--neutral-white);
   padding: 6px 10px;
   border-radius: 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
 }
 
-.language-switch:hover {
-  box-shadow: var(--shadow-glass);
-  transform: translateY(-1px);
-  background: var(--gradient-urban);
+.content-idioma {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+
+.lang-option {
+  position: relative;
+  z-index: 2;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 8px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.lang-option:hover {
+  color: #fff;
+}
+
+.divider {
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.slider-bg {
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  width: 38px;
+  height: 28px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
 
 /* --- Sección principal con fondo --- */
 .hero {

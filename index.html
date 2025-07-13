@@ -1,18 +1,25 @@
+
+<!-- Proyecto pagina web LASAI -->
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LATAM School of AI 2025</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="imagen/icono.ico" rel="shortcut icon" type="image/x-icon">
+    <title>LATAM School of AI 2025</title>
+    <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
 <body>
 
   <header class="navbar">
-    <div class="logo">LASIA</div>
-    <nav class="nav-links">
+      <div class="logo">
+          <img src="imagen/LASAI%20WHITE.png" class="logo-img" alt="">
+      </div>
+      <nav class="nav-links">
         <a href="#" data-i18n="homeNav">Home</a>
         <a href="#information" data-i18n="informationNav">Information</a>
         <a href="#speakers" data-i18n="speakersNav">Speakers</a>
@@ -23,10 +30,16 @@
         <a href="#faq" data-i18n="faqNav">FAQ</a>
         <a href="#organizers" data-i18n="organizersNav">Organizers</a>
         <a href="#contact" data-i18n="contactNav">Contact</a>
-    </nav>
-    <div class="language-switch">
-      🇬🇧 ENGLISH ▼
-    </div>
+      </nav>
+
+      <div class="language-switch" data-i18n="leng">
+          <div class="content-idioma">
+              <div class="slider-bg" id="lang-slider"></div>
+              <a class="lang-option" data-lang="es">ES</a>
+              <span class="divider">|</span>
+              <a class="lang-option" data-lang="en">EN</a>
+          </div>
+      </div>
   </header>
 
   <section class="hero">
@@ -92,7 +105,7 @@
           <!-- Speaker 1-->
           <div class="speaker-card-vertical">
               <div class="photo-wrapper">
-                  <img src="imagen/DianaIkp.jpg" alt="Foto de Speaker" class="speaker-photo" />
+                  <img src="imagen/Diana_Inkpen.jpg" alt="Foto de Speaker" class="speaker-photo" />
               </div>
               <div class="speaker-info">
                   <h3 data-i18n="speaker1_name">Diana Inkpen</h3>
@@ -257,7 +270,7 @@
       <div class="carousel-container">
           <div class="carousel-track">
               <div class="carousel-item">
-                  <img src="imagen/FISI.jpg" alt="FISI UNMSM 1">
+                  <img src="imagen/VENUE_FISI.jpg" alt="FISI UNMSM 1">
               </div>
               <div class="carousel-item">
                   <img src="https://biologia-unmsm.s3.us-east-2.amazonaws.com/dia_universidad_peruana_unmsm_dddaccb72a.png" alt="Campus UNMSM">
@@ -341,42 +354,7 @@
             </div>
         </div>
     </section>
-
-    <footer id="contact" class="site-footer">
-      <div class="footer-content">
-          <!-- Columna izquierda -->
-          <div class="footer-left">
-              <h3 data-i18n="footer_title">LATAM School of<br><strong>Artificial Intelligence</strong><br>2025</h3>
-          </div>
-
-          <!-- Separador vertical -->
-          <div class="footer-separator"></div>
-
-          <!-- Columna derecha - Información de contacto -->
-          <div class="footer-right">
-              <h2 data-i18n="contact_us">Contact Us</h2>
-              <p data-i18n="contact_info">For more information about the LATAM School of AI 2025</p>
-              <p data-i18n="contact_email">Email: info@lasia2025.org</p>
-          </div>
-      </div>
-
-      <!-- Barra inferior -->
-      <div class="footer-bottom">
-          <p data-i18n="copyright">© 2025 Copyright - SAC</p>
-          <div class="footer-links">
-              <a href="#" data-i18n="privacy_policy">Privacy Policy</a>
-              <a href="#" data-i18n="terms_of_use">Terms of use</a>
-              <a href="#" data-i18n="faqs">FAQs</a>
-              <a href="https://www.linkedin.com/company/simbig/"><i class="fab fa-linkedin"></i></a>
-              <a href="https://web.facebook.com/SIMBig.Conference"><i class="fab fa-facebook"></i></a>
-              <a href="https://www.instagram.com/simbig.conference/"><i class="fab fa-instagram"></i></a>
-              <a href="https://twitter.com/SIMBigPeru"><i class="fab fa-x-twitter"></i></a>
-              <a href="https://www.youtube.com/channel/UCNgraquKWFCzcujSavfB6mA"><i class="fab fa-youtube"></i></a>
-          </div>
-      </div>
-  </footer>
-
-  <script>
+    <script>
       const translations = {
           es: {
               // Navigation items with Nav suffix
@@ -390,15 +368,14 @@
               faqNav: "Preguntas frecuentes",
               organizersNav: "Organizadores",
               contactNav: "Contacto",
-              language: "🇪🇸 ESPAÑOL ▼",
-              
+              leng: "AAAAAAAAA",
               // Hero
               title: "Escuela LATAM de Inteligencia Artificial 2025",
               colocated: "Coorganizado con SIMBig 2025",
               location: "📍 FISI-UNMSM, Lima, Perú",
               date: "📅 29–31 Octubre 2025",
               timer: "TEMPORIZADOR 99 días &nbsp; 24h &nbsp; 60 min &nbsp; 60 segundos",
-              
+
               // Information Cards
               place_registration: "Lugar y registro",
               place_registration_desc: "La Escuela LATAM de IA se realizará en FISI-UNMSM en Lima, Perú. Se requiere registro para participar.",
@@ -408,11 +385,11 @@
               organization_desc: "Organizado por investigadores e instituciones líderes en IA de América Latina en colaboración con SIMBig.",
               requirements: "Requisitos",
               requirements_desc: "Conocimientos básicos de programación o matemáticas. Laptop requerida para sesiones prácticas.",
-              
+
               // About
               about_us: "ACERCA DE NOSOTROS",
               about_desc: "La Escuela Latinoamericana de Inteligencia Artificial (LASIA) es un programa educativo intensivo diseñado para avanzar el conocimiento y la investigación en IA en América Latina. Nuestra misión es proporcionar capacitación de alta calidad, fomentar la colaboración entre investigadores y promover el desarrollo de soluciones de IA para desafíos regionales.<br><br>Reunimos a expertos líderes de todo el mundo para compartir su conocimiento a través de conferencias, talleres y sesiones prácticas, creando una experiencia de aprendizaje única para la próxima generación de investigadores y profesionales de IA.",
-              
+
               // Speakers
               speakers: "PONENTES",
               speaker1_name: "Diana Inkpen",
@@ -421,25 +398,25 @@
               speaker2_name: "Aline Villavicencio",
               speaker2_role: "Universidad de Exeter, Reino Unido",
               speaker2_bio: "Aline Villavicencio es la Directora del Instituto de Ciencia de Datos e Inteligencia Artificial de la Universidad de Exeter, afiliada al Departamento de Ciencias de la Computación de la Universidad de Sheffield (Reino Unido), y tiene una beca en el Instituto Alan Turing. Anteriormente, ocupó puestos académicos en el Instituto de Informática de la Universidad Federal de Rio Grande do Sul, Brasil (entre 2005 y 2021) y en la Escuela de Ciencias de la Computación e Ingeniería Electrónica de la Universidad de Essex, Reino Unido.",
-              
+
               // Syllabus
               syllabus: "TEMARIO",
               to_be_announced: "Por anunciar",
-              
+
               // Schedule
               schedule: "HORARIO",
               schedule_coming_soon: "Horario próximamente",
-              
+
               // Sponsors
               sponsors: "PATROCINADORES",
-              
+
               // Dates
               dates: "FECHAS",
               oct: "OCT",
               day1_desc: "Apertura y Conferencias",
               day2_desc: "Talleres y Sesiones",
               day3_desc: "Presentaciones y Clausura",
-              
+
               // FAQ
               faq_title: "PREGUNTAS FRECUENTES",
               faq1_q: "¿Qué es la Escuela LATAM de IA?",
@@ -466,13 +443,13 @@
               faq11_a: "Sí, el evento está abierto a estudiantes, profesionales e interesados en IA con conocimientos básicos de programación o matemáticas.",
               faq12_q: "¿Habrá certificado?",
               faq12_a: "Sí, se otorgará certificado de participación a quienes asistan a todas las sesiones.",
-              
+
               // Venue
               venue: "SEDE",
-              
+
               // Organizers
               organizers: "ORGANIZADORES",
-              
+
               // Footer
               footer_title: "Escuela LATAM de<br><strong>Inteligencia Artificial</strong><br>2025",
               contact_us: "Contáctanos",
@@ -495,15 +472,14 @@
               faqNav: "FAQ",
               organizersNav: "Organizers",
               contactNav: "Contact",
-              language: "🇬🇧 ENGLISH ▼",
-              
+              leng: "NBBBBBBBBB",
               // Hero
               title: "LATAM School of Artificial Intelligence 2025",
               colocated: "Co-located with SIMBig 2025",
               location: "📍 FISI-UNMSM, Lima, Perú",
               date: "📅 29–31 October 2025",
               timer: "TIMER 99 days &nbsp; 24h &nbsp; 60 min &nbsp; 60 seconds",
-              
+
               // Information Cards
               place_registration: "Place and registration",
               place_registration_desc: "The Latin American School of AI will take place at FISI-UNMSM in Lima, Peru. Registration is required for participation.",
@@ -513,11 +489,11 @@
               organization_desc: "Organized by leading AI researchers and institutions from Latin America in collaboration with SIMBig.",
               requirements: "Requirements",
               requirements_desc: "Basic knowledge of programming or mathematics. Laptop required for hands-on sessions.",
-              
+
               // About
               about_us: "ABOUT US",
               about_desc: "The Latin American School of Artificial Intelligence (LASIA) is an intensive educational program designed to advance AI knowledge and research in Latin America. Our mission is to provide high-quality training, foster collaboration among researchers, and promote the development of AI solutions for regional challenges.<br><br>We bring together leading experts from around the world to share their knowledge through lectures, workshops, and hands-on sessions, creating a unique learning experience for the next generation of AI researchers and practitioners.",
-              
+
               // Speakers
               speakers: "SPEAKERS",
               speaker1_name: "Diana Inkpen",
@@ -526,25 +502,25 @@
               speaker2_name: "Aline Villavicencio",
               speaker2_role: "University of Exeter, UK",
               speaker2_bio: "Aline Villavicencio is the Director of the Institute of Data Science and Artificial Intelligence, University of Exeter, affiliated to the Department of Computer Science, University of Sheffield (UK), and has a Fellowship at the Alan Turing Institute. Before these, she held academic positions in the Institute of Informatics, Federal University of Rio Grande do Sul, Brazil (between 2005 and 2021) and in the School of Computer Science and Electronic Engineering, University of Essex, UK.",
-              
+
               // Syllabus
               syllabus: "SYLLABUS",
               to_be_announced: "To be announced",
-              
+
               // Schedule
               schedule: "SCHEDULE",
               schedule_coming_soon: "Schedule coming soon",
-              
+
               // Sponsors
               sponsors: "SPONSORS",
-              
+
               // Dates
               dates: "DATES",
               oct: "OCT",
               day1_desc: "Opening & Keynotes",
               day2_desc: "Workshops & Sessions",
               day3_desc: "Presentations & Closing",
-              
+
               // FAQ
               faq_title: "FREQUENTLY ASKED QUESTIONS",
               faq1_q: "What is the LATAM School of AI?",
@@ -571,13 +547,13 @@
               faq11_a: "Yes, the event is open to students, professionals and those interested in AI with basic programming or mathematics knowledge.",
               faq12_q: "Will there be a certificate?",
               faq12_a: "Yes, a participation certificate will be awarded to those who attend all sessions.",
-              
+
               // Venue
               venue: "VENUE",
-              
+
               // Organizers
               organizers: "ORGANIZERS",
-              
+
               // Footer
               footer_title: "LATAM School of<br><strong>Artificial Intelligence</strong><br>2025",
               contact_us: "Contact us",
@@ -606,8 +582,8 @@
           // Cambia el botón de idioma
           document.querySelector('.language-switch').textContent = translations[currentLang].language;
       });
-  </script>
-  <script>
+    </script>
+    <script>
       function updateCountdown() {
           const eventDate = new Date('2025-10-29T00:00:00').getTime(); // Fecha del evento
           const now = new Date().getTime();
@@ -632,10 +608,90 @@
       setInterval(updateCountdown, 1000);
       updateCountdown(); // Ejecutar inmediatamente al cargar
   </script>
+    <script>
+          const langOptions = document.querySelectorAll('.lang-option');
+          const slider = document.getElementById('lang-slider');
+
+          function translatePage(lang) {
+              const elements = document.querySelectorAll('[data-i18n]');
+              elements.forEach(el => {
+                  // ✅ IGNORA elementos dentro del botón de idioma
+                  if (el.closest('.language-switch')) return;
+
+                  const key = el.getAttribute('data-i18n');
+                  if (translations[lang] && translations[lang][key]) {
+                      el.innerHTML = translations[lang][key];
+                  }
+              });
+          }
+
+          function updateLanguage(lang) {
+              localStorage.setItem('language', lang);
+              translatePage(lang);
+
+              // Mover el fondo del slider con animación
+              if (lang === 'es') {
+                  slider.style.transform = 'translateX(0px)';
+              } else if (lang === 'en') {
+                  slider.style.transform = 'translateX(60px)';
+              }
+
+              // Cambiar el estilo visual activo
+              langOptions.forEach(opt => {
+                  opt.classList.toggle('active', opt.dataset.lang === lang);
+              });
+          }
+
+          document.addEventListener('DOMContentLoaded', () => {
+              const savedLang = localStorage.getItem('language') || 'en'; // por defecto inglés
+              updateLanguage(savedLang);
+
+              langOptions.forEach(option => {
+                  option.addEventListener('click', () => {
+                      const selectedLang = option.dataset.lang;
+                      updateLanguage(selectedLang);
+                  });
+              });
+          });
+    </script>
 
 </body>
+<footer>
+    <section id="contact" class="site-footer">
+        <div class="footer-content">
+            <!-- Columna izquierda -->
+            <div class="footer-left">
+                <h3 data-i18n="footer_title">LATAM School of<br><strong>Artificial Intelligence</strong><br>2025</h3>
+            </div>
+
+            <!-- Separador vertical -->
+            <div class="footer-separator"></div>
+
+            <!-- Columna derecha - Información de contacto -->
+            <div class="footer-right">
+                <h2 data-i18n="contact_us">Contact Us</h2>
+                <p data-i18n="contact_info">For more information about the LATAM School of AI 2025</p>
+                <p data-i18n="contact_email">Email: info@lasia2025.org</p>
+            </div>
+        </div>
+
+        <!-- Barra inferior -->
+        <div class="footer-bottom">
+            <p data-i18n="copyright">© 2025 Copyright - SAC</p>
+            <div class="footer-links">
+                <a href="#" data-i18n="privacy_policy">Privacy Policy</a>
+                <a href="#" data-i18n="terms_of_use">Terms of use</a>
+                <a href="#" data-i18n="faqs">FAQs</a>
+                <a href="https://www.linkedin.com/company/simbig/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://web.facebook.com/SIMBig.Conference"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/simbig.conference/"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/SIMBigPeru"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.youtube.com/channel/UCNgraquKWFCzcujSavfB6mA"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+</footer>
 
 </html>
-</body>
 
-</html>
+
