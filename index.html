@@ -366,296 +366,6 @@
         </div>
     </section>
 
-    <script>
-      function updateCountdown() {
-          const eventDate = new Date('2025-10-29T00:00:00').getTime();
-          const now = new Date().getTime();
-          const timeLeft = eventDate - now;
-
-          if (timeLeft <= 0) {
-              document.getElementById('timer-bar-text').innerHTML = '<span style="color:white;">¡El evento ha comenzado!</span>';
-              return;
-          }
-
-          const days = String(Math.floor(timeLeft / (1000 * 60 * 60 * 24))).padStart(2, '0');
-          const hours = String(Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-          const minutes = String(Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-          const seconds = String(Math.floor((timeLeft % (1000 * 60)) / 1000)).padStart(2, '0');
-
-          document.getElementById('days').textContent = days;
-          document.getElementById('hours').textContent = hours;
-          document.getElementById('minutes').textContent = minutes;
-          document.getElementById('seconds').textContent = seconds;
-      }
-
-      setInterval(updateCountdown, 1000);
-      updateCountdown();
-  </script>
-    <script>
-      const langOptions = document.querySelectorAll('.lang-option');
-      const slider = document.getElementById('lang-slider');
-
-      // Objeto de traducciones global
-      const translations = {
-          es: {
-              // Navigation items with Nav suffix
-              homeNav: "Inicio",
-              informationNav: "Información",
-              speakersNav: "Ponentes",
-              syllabusNav: "Temario",
-              scheduleNav: "Horario",
-              sponsorsNav: "Patrocinadores",
-              datesNav: "Fechas",
-              faqNav: "Preguntas frecuentes",
-              organizersNav: "Organizadores",
-              contactNav: "Contacto",
-              // Hero
-              title: "Escuela LATAM de Inteligencia Artificial 2025",
-              colocated: "Coorganizado con SIMBig 2025",
-              location: "📍 FISI-UNMSM, Lima, Perú",
-              date: "📅 29–31 Octubre 2025",
-              days: "DÍAS",
-              hours: "HORAS",
-              minutes: "MINUTOS",
-              seconds: "SEGUNDOS",
-
-              // Information Cards
-              place_registration: "Lugar y registro",
-              place_registration_desc: "La Escuela LATAM de IA se realizará en FISI-UNMSM en Lima, Perú. Se requiere registro para participar.",
-              intended_audience: "Audiencia objetivo",
-              intended_audience_desc: "Estudiantes, investigadores y profesionales interesados en inteligencia artificial y aprendizaje automático de América Latina.",
-              organization: "Organización",
-              organization_desc: "Organizado por investigadores e instituciones líderes en IA de América Latina en colaboración con SIMBig.",
-              requirements: "Requisitos",
-              requirements_desc: "Conocimientos básicos de programación o matemáticas. Laptop requerida para sesiones prácticas.",
-
-              // About
-              about_us: "ACERCA DE NOSOTROS",
-              about_desc: "La Escuela Latinoamericana de Inteligencia Artificial (LASIA) es un programa educativo intensivo diseñado para avanzar el conocimiento y la investigación en IA en América Latina. Nuestra misión es proporcionar capacitación de alta calidad, fomentar la colaboración entre investigadores y promover el desarrollo de soluciones de IA para desafíos regionales.<br><br>Reunimos a expertos líderes de todo el mundo para compartir su conocimiento a través de conferencias, talleres y sesiones prácticas, creando una experiencia de aprendizaje única para la próxima generación de investigadores y profesionales de IA.",
-
-              // Speakers
-              speakers: "PONENTES",
-              speaker1_name: "Diana Inkpen",
-              speaker1_role: "Universidad de Ottawa, Canadá",
-              speaker1_bio: "Diana Inkpen es Profesora en la Universidad de Ottawa, en la Escuela de Ingeniería Eléctrica y Ciencias de la Computación. Su investigación se centra en aplicaciones de Lingüística Computacional y Minería de Texto. Ha organizado siete talleres internacionales y fue co-presidenta del programa de la conferencia AI 2012. Forma parte de los comités de programa de muchas conferencias y es editora asociada de las revistas Computational Intelligence y Natural Language Engineering. Publicó un libro sobre Procesamiento de Lenguaje Natural para Redes Sociales (Morgan and Claypool Publishers, Synthesis Lectures on Human Language Technologies), 8 capítulos de libros, más de 25 artículos de revistas y más de 90 artículos de conferencias. Ha recibido muchas subvenciones de investigación, incluyendo colaboraciones industriales intensivas.",
-              speaker2_name: "Aline Villavicencio",
-              speaker2_role: "Universidad de Exeter, Reino Unido",
-              speaker2_bio: "Aline Villavicencio es la Directora del Instituto de Ciencia de Datos e Inteligencia Artificial de la Universidad de Exeter, afiliada al Departamento de Ciencias de la Computación de la Universidad de Sheffield (Reino Unido), y tiene una beca en el Instituto Alan Turing. Anteriormente, ocupó puestos académicos en el Instituto de Informática de la Universidad Federal de Rio Grande do Sul, Brasil (entre 2005 y 2021) y en la Escuela de Ciencias de la Computación e Ingeniería Electrónica de la Universidad de Essex, Reino Unido.",
-
-              // Syllabus
-              syllabus: "TEMARIO",
-              to_be_announced: "Por anunciar",
-
-              // Schedule
-              schedule: "HORARIO",
-              schedule_coming_soon: "Horario próximamente",
-
-              // Sponsors
-              sponsors: "PATROCINADORES",
-
-              // Dates
-              dates: "FECHAS",
-              oct: "OCT",
-              day1_desc: "Apertura y Conferencias",
-              day2_desc: "Talleres y Sesiones",
-              day3_desc: "Presentaciones y Clausura",
-
-              // FAQ
-              faq_title: "PREGUNTAS FRECUENTES",
-              faq1_q: "¿Qué es la Escuela LATAM de IA?",
-              faq1_a: "Es una escuela de inteligencia artificial dirigida a estudiantes y profesionales de Latinoamérica, con sesiones intensivas y conferencias.",
-              faq2_q: "¿Dónde se llevará a cabo?",
-              faq2_a: "En la Facultad de Ingeniería de Sistemas (FISI) de la Universidad Nacional Mayor de San Marcos (UNMSM), Lima, Perú.",
-              faq3_q: "¿Cuáles son los requisitos?",
-              faq3_a: "Conocimientos básicos de programación o matemáticas y una laptop para sesiones prácticas.",
-              faq4_q: "¿El registro es gratuito?",
-              faq4_a: "La información de registro se anunciará pronto. Consulte nuestro sitio web para actualizaciones.",
-              faq5_q: "¿En qué idioma serán las sesiones?",
-              faq5_a: "Las sesiones se realizarán en inglés y español, dependiendo del ponente.",
-              faq6_q: "¿Se proporcionará alojamiento?",
-              faq6_a: "Los participantes son responsables de su propio alojamiento. Proporcionaremos una lista de hoteles recomendados.",
-              faq7_q: "¿Puedo presentar mi investigación?",
-              faq7_a: "Sí, habrá sesiones de pósters y oportunidades de presentación para los participantes.",
-              faq8_q: "¿Se proporcionarán comidas?",
-              faq8_a: "Se proporcionarán pausas para café y almuerzo durante los días del evento.",
-              faq9_q: "¿Cómo puedo contactar a los organizadores?",
-              faq9_a: "Puede contactarnos a través de las direcciones de correo electrónico proporcionadas en la sección de contacto.",
-              faq10_q: "¿Las sesiones serán grabadas?",
-              faq10_a: "Las sesiones seleccionadas pueden ser grabadas y puestas a disposición de los participantes después del evento.",
-              faq11_q: "¿Puedo asistir si no soy estudiante?",
-              faq11_a: "Sí, el evento está abierto a estudiantes, profesionales e interesados en IA con conocimientos básicos de programación o matemáticas.",
-              faq12_q: "¿Habrá certificado?",
-              faq12_a: "Sí, se otorgará certificado de participación a quienes asistan a todas las sesiones.",
-
-              // Venue
-              venue: "SEDE",
-
-              // Organizers
-              organizers: "ORGANIZADORES",
-
-              // Footer
-              footer_title: "Escuela LATAM de<br><strong>Inteligencia Artificial</strong><br>2025",
-              contact_us: "Contáctanos",
-              contact_info: "Para más información sobre la Escuela LATAM de IA 2025",
-              contact_email: "Email: info@lasia2025.org",
-              copyright: "© 2025 Copyright - SAC",
-              privacy_policy: "Política de privacidad",
-              terms_of_use: "Términos de uso",
-              faqs: "Preguntas frecuentes"
-          },
-          en: {
-              // Navigation items with Nav suffix
-              homeNav: "Home",
-              informationNav: "Information",
-              speakersNav: "Speakers",
-              syllabusNav: "Syllabus",
-              scheduleNav: "Schedule",
-              sponsorsNav: "Sponsors",
-              datesNav: "Dates",
-              faqNav: "FAQ",
-              organizersNav: "Organizers",
-              contactNav: "Contact",
-              // Hero
-              title: "LATAM School of Artificial Intelligence 2025",
-              colocated: "Co-located with SIMBig 2025",
-              location: "📍 FISI-UNMSM, Lima, Perú",
-              date: "📅 29–31 October 2025",
-              days: "DAYS",
-              hours: "HOURS",
-              minutes: "MINUTES",
-              seconds: "SECONDS",
-
-              // Information Cards
-              place_registration: "Place and registration",
-              place_registration_desc: "The Latin American School of AI will take place at FISI-UNMSM in Lima, Peru. Registration is required for participation.",
-              intended_audience: "Intended audience",
-              intended_audience_desc: "Students, researchers, and professionals interested in artificial intelligence and machine learning from Latin America.",
-              organization: "Organization",
-              organization_desc: "Organized by leading AI researchers and institutions from Latin America in collaboration with SIMBig.",
-              requirements: "Requirements",
-              requirements_desc: "Basic knowledge of programming or mathematics. Laptop required for hands-on sessions.",
-
-              // About
-              about_us: "ABOUT US",
-              about_desc: "The Latin American School of Artificial Intelligence (LASIA) is an intensive educational program designed to advance AI knowledge and research in Latin America. Our mission is to provide high-quality training, foster collaboration among researchers, and promote the development of AI solutions for regional challenges.<br><br>We bring together leading experts from around the world to share their knowledge through lectures, workshops, and hands-on sessions, creating a unique learning experience for the next generation of AI researchers and practitioners.",
-
-              // Speakers
-              speakers: "SPEAKERS",
-              speaker1_name: "Diana Inkpen",
-              speaker1_role: "University of Ottawa, Canada",
-              speaker1_bio: "Diana Inkpen is a Professor at the University of Ottawa, in the School of Electrical Engineering and Computer Science. Her research is in applications of Computational Linguistics and Text Mining. She organized seven international workshops and she was a program co-chair for the AI 2012 conference. She is in the program committees of many conferences and an associate editor of the Computational Intelligence and the Natural Language Engineering journals. She published a book on Natural Language Processing for Social Media (Morgan and Claypool Publishers, Synthesis Lectures on Human Language Technologies), 8 book chapters, more than 25 journal articles and more than 90 conference papers. She received many research grants, including intensive industrial collaborations.",
-              speaker2_name: "Aline Villavicencio",
-              speaker2_role: "University of Exeter, UK",
-              speaker2_bio: "Aline Villavicencio is the Director of the Institute of Data Science and Artificial Intelligence, University of Exeter, affiliated to the Department of Computer Science, University of Sheffield (UK), and has a Fellowship at the Alan Turing Institute. Before these, she held academic positions in the Institute of Informatics, Federal University of Rio Grande do Sul, Brazil (between 2005 and 2021) and in the School of Computer Science and Electronic Engineering, University of Essex, UK.",
-
-              // Syllabus
-              syllabus: "SYLLABUS",
-              to_be_announced: "To be announced",
-
-              // Schedule
-              schedule: "SCHEDULE",
-              schedule_coming_soon: "Schedule coming soon",
-
-              // Sponsors
-              sponsors: "SPONSORS",
-
-              // Dates
-              dates: "DATES",
-              oct: "OCT",
-              day1_desc: "Opening & Keynotes",
-              day2_desc: "Workshops & Sessions",
-              day3_desc: "Presentations & Closing",
-
-              // FAQ
-              faq_title: "FREQUENTLY ASKED QUESTIONS",
-              faq1_q: "What is the LATAM School of AI?",
-              faq1_a: "It is an artificial intelligence school aimed at students and professionals from Latin America, with intensive sessions and conferences.",
-              faq2_q: "Where will it take place?",
-              faq2_a: "At the Faculty of Systems Engineering (FISI) of the Universidad Nacional Mayor de San Marcos (UNMSM), Lima, Peru.",
-              faq3_q: "What are the requirements?",
-              faq3_a: "Basic knowledge of programming or mathematics and a laptop for hands-on sessions.",
-              faq4_q: "Is registration free?",
-              faq4_a: "Registration information will be announced soon. Check our website for updates.",
-              faq5_q: "What language will the sessions be in?",
-              faq5_a: "Sessions will be conducted in English and Spanish, depending on the speaker.",
-              faq6_q: "Will accommodation be provided?",
-              faq6_a: "Participants are responsible for their own accommodation. We will provide a list of recommended hotels.",
-              faq7_q: "Can I present my research?",
-              faq7_a: "Yes, there will be poster sessions and presentation opportunities for participants.",
-              faq8_q: "Will meals be provided?",
-              faq8_a: "Coffee breaks and lunch will be provided during the event days.",
-              faq9_q: "How can I contact the organizers?",
-              faq9_a: "You can contact us through the email addresses provided in the contact section.",
-              faq10_q: "Will sessions be recorded?",
-              faq10_a: "Selected sessions may be recorded and made available to participants after the event.",
-              faq11_q: "Can I attend if I'm not a student?",
-              faq11_a: "Yes, the event is open to students, professionals and those interested in AI with basic programming or mathematics knowledge.",
-              faq12_q: "Will there be a certificate?",
-              faq12_a: "Yes, a participation certificate will be awarded to those who attend all sessions.",
-
-              // Venue
-              venue: "VENUE",
-
-              // Organizers
-              organizers: "ORGANIZERS",
-
-              // Footer
-              footer_title: "LATAM School of<br><strong>Artificial Intelligence</strong><br>2025",
-              contact_us: "Contact us",
-              contact_info: "For more information about the LATAM School of AI 2025",
-              contact_email: "Email: info@lasia2025.org",
-              copyright: "© 2025 Copyright - SAC",
-              privacy_policy: "Privacy policy",
-              terms_of_use: "Terms of use",
-              faqs: "FAQs"
-          }
-      };
-
-      // Aplica traducción a la página
-      function translatePage(lang) {
-          const elements = document.querySelectorAll('[data-i18n]');
-          elements.forEach(el => {
-              if (el.closest('.language-switch')) return; // Ignorar botón
-              const key = el.getAttribute('data-i18n');
-              if (translations[lang] && translations[lang][key]) {
-                  el.textContent = translations[lang][key];
-              }
-          });
-      }
-
-      // Actualiza idioma y animación
-      function updateLanguage(lang) {
-          localStorage.setItem('language', lang);
-          translatePage(lang);
-
-          // Animar el slider
-          if (lang === 'es') {
-              slider.style.transform = 'translateX(0%)';
-          } else {
-              slider.style.transform = 'translateX(100%)';
-          }
-
-          // Cambiar estilo activo
-          langOptions.forEach(opt => {
-              opt.classList.toggle('active', opt.dataset.lang === lang);
-          });
-      }
-
-      // Detectar idioma guardado o usar español por defecto
-      document.addEventListener('DOMContentLoaded', () => {
-          const savedLang = localStorage.getItem('language') || 'es';
-          updateLanguage(savedLang);
-
-          // Agregar eventos
-          langOptions.forEach(option => {
-              option.addEventListener('click', () => {
-                  const selectedLang = option.dataset.lang;
-                  updateLanguage(selectedLang);
-              });
-          });
-      });
-  </script>
-
 </body>
 
 <footer>
@@ -663,7 +373,9 @@
         <div class="footer-content">
             <!-- Columna izquierda -->
             <div class="footer-left">
-                <h3 data-i18n="footer_title">LATAM School of<br><strong>Artificial Intelligence</strong><br>2025</h3>
+                <h3 data-i18n="footer_title">
+                    LATAM School of<br><strong>Artificial Intelligence</strong><br>2025
+                </h3>
             </div>
 
             <!-- Separador vertical -->
@@ -693,6 +405,296 @@
         </div>
     </section>
 </footer>
+
+<script>
+    function updateCountdown() {
+        const eventDate = new Date('2025-10-29T00:00:00').getTime();
+        const now = new Date().getTime();
+        const timeLeft = eventDate - now;
+
+        if (timeLeft <= 0) {
+            document.getElementById('timer-bar-text').innerHTML = '<span style="color:white;">¡El evento ha comenzado!</span>';
+            return;
+        }
+
+        const days = String(Math.floor(timeLeft / (1000 * 60 * 60 * 24))).padStart(2, '0');
+        const hours = String(Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+        const minutes = String(Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+        const seconds = String(Math.floor((timeLeft % (1000 * 60)) / 1000)).padStart(2, '0');
+
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+</script>
+<script>
+    const langOptions = document.querySelectorAll('.lang-option');
+    const slider = document.getElementById('lang-slider');
+
+    // Objeto de traducciones global
+    const translations = {
+        es: {
+            // Navigation items with Nav suffix
+            homeNav: "Inicio",
+            informationNav: "Información",
+            speakersNav: "Ponentes",
+            syllabusNav: "Temario",
+            scheduleNav: "Horario",
+            sponsorsNav: "Patrocinadores",
+            datesNav: "Fechas",
+            faqNav: "Preguntas frecuentes",
+            organizersNav: "Organizadores",
+            contactNav: "Contacto",
+            // Hero
+            title: "Escuela LATAM de Inteligencia Artificial 2025",
+            colocated: "Coorganizado con SIMBig 2025",
+            location: "📍 FISI-UNMSM, Lima, Perú",
+            date: "📅 29–31 Octubre 2025",
+            days: "DÍAS",
+            hours: "HORAS",
+            minutes: "MINUTOS",
+            seconds: "SEGUNDOS",
+
+            // Information Cards
+            place_registration: "Lugar y registro",
+            place_registration_desc: "La Escuela LATAM de IA se realizará en FISI-UNMSM en Lima, Perú. Se requiere registro para participar.",
+            intended_audience: "Audiencia objetivo",
+            intended_audience_desc: "Estudiantes, investigadores y profesionales interesados en inteligencia artificial y aprendizaje automático de América Latina.",
+            organization: "Organización",
+            organization_desc: "Organizado por investigadores e instituciones líderes en IA de América Latina en colaboración con SIMBig.",
+            requirements: "Requisitos",
+            requirements_desc: "Conocimientos básicos de programación o matemáticas. Laptop requerida para sesiones prácticas.",
+
+            // About
+            about_us: "ACERCA DE NOSOTROS",
+            about_desc: "La Escuela Latinoamericana de Inteligencia Artificial (LASIA) es un programa educativo intensivo diseñado para avanzar el conocimiento y la investigación en IA en América Latina. Nuestra misión es proporcionar capacitación de alta calidad, fomentar la colaboración entre investigadores y promover el desarrollo de soluciones de IA para desafíos regionales.<br><br>Reunimos a expertos líderes de todo el mundo para compartir su conocimiento a través de conferencias, talleres y sesiones prácticas, creando una experiencia de aprendizaje única para la próxima generación de investigadores y profesionales de IA.",
+
+            // Speakers
+            speakers: "PONENTES",
+            speaker1_name: "Diana Inkpen",
+            speaker1_role: "Universidad de Ottawa, Canadá",
+            speaker1_bio: "Diana Inkpen es Profesora en la Universidad de Ottawa, en la Escuela de Ingeniería Eléctrica y Ciencias de la Computación. Su investigación se centra en aplicaciones de Lingüística Computacional y Minería de Texto. Ha organizado siete talleres internacionales y fue co-presidenta del programa de la conferencia AI 2012. Forma parte de los comités de programa de muchas conferencias y es editora asociada de las revistas Computational Intelligence y Natural Language Engineering. Publicó un libro sobre Procesamiento de Lenguaje Natural para Redes Sociales (Morgan and Claypool Publishers, Synthesis Lectures on Human Language Technologies), 8 capítulos de libros, más de 25 artículos de revistas y más de 90 artículos de conferencias. Ha recibido muchas subvenciones de investigación, incluyendo colaboraciones industriales intensivas.",
+            speaker2_name: "Aline Villavicencio",
+            speaker2_role: "Universidad de Exeter, Reino Unido",
+            speaker2_bio: "Aline Villavicencio es la Directora del Instituto de Ciencia de Datos e Inteligencia Artificial de la Universidad de Exeter, afiliada al Departamento de Ciencias de la Computación de la Universidad de Sheffield (Reino Unido), y tiene una beca en el Instituto Alan Turing. Anteriormente, ocupó puestos académicos en el Instituto de Informática de la Universidad Federal de Rio Grande do Sul, Brasil (entre 2005 y 2021) y en la Escuela de Ciencias de la Computación e Ingeniería Electrónica de la Universidad de Essex, Reino Unido.",
+
+            // Syllabus
+            syllabus: "TEMARIO",
+            to_be_announced: "Por anunciar",
+
+            // Schedule
+            schedule: "HORARIO",
+            schedule_coming_soon: "Horario próximamente",
+
+            // Sponsors
+            sponsors: "PATROCINADORES",
+
+            // Dates
+            dates: "FECHAS",
+            oct: "OCT",
+            day1_desc: "Apertura y Conferencias",
+            day2_desc: "Talleres y Sesiones",
+            day3_desc: "Presentaciones y Clausura",
+
+            // FAQ
+            faq_title: "PREGUNTAS FRECUENTES",
+            faq1_q: "¿Qué es la Escuela LATAM de IA?",
+            faq1_a: "Es una escuela de inteligencia artificial dirigida a estudiantes y profesionales de Latinoamérica, con sesiones intensivas y conferencias.",
+            faq2_q: "¿Dónde se llevará a cabo?",
+            faq2_a: "En la Facultad de Ingeniería de Sistemas (FISI) de la Universidad Nacional Mayor de San Marcos (UNMSM), Lima, Perú.",
+            faq3_q: "¿Cuáles son los requisitos?",
+            faq3_a: "Conocimientos básicos de programación o matemáticas y una laptop para sesiones prácticas.",
+            faq4_q: "¿El registro es gratuito?",
+            faq4_a: "La información de registro se anunciará pronto. Consulte nuestro sitio web para actualizaciones.",
+            faq5_q: "¿En qué idioma serán las sesiones?",
+            faq5_a: "Las sesiones se realizarán en inglés y español, dependiendo del ponente.",
+            faq6_q: "¿Se proporcionará alojamiento?",
+            faq6_a: "Los participantes son responsables de su propio alojamiento. Proporcionaremos una lista de hoteles recomendados.",
+            faq7_q: "¿Puedo presentar mi investigación?",
+            faq7_a: "Sí, habrá sesiones de pósters y oportunidades de presentación para los participantes.",
+            faq8_q: "¿Se proporcionarán comidas?",
+            faq8_a: "Se proporcionarán pausas para café y almuerzo durante los días del evento.",
+            faq9_q: "¿Cómo puedo contactar a los organizadores?",
+            faq9_a: "Puede contactarnos a través de las direcciones de correo electrónico proporcionadas en la sección de contacto.",
+            faq10_q: "¿Las sesiones serán grabadas?",
+            faq10_a: "Las sesiones seleccionadas pueden ser grabadas y puestas a disposición de los participantes después del evento.",
+            faq11_q: "¿Puedo asistir si no soy estudiante?",
+            faq11_a: "Sí, el evento está abierto a estudiantes, profesionales e interesados en IA con conocimientos básicos de programación o matemáticas.",
+            faq12_q: "¿Habrá certificado?",
+            faq12_a: "Sí, se otorgará certificado de participación a quienes asistan a todas las sesiones.",
+
+            // Venue
+            venue: "SEDE",
+
+            // Organizers
+            organizers: "ORGANIZADORES",
+
+            // Footer
+            footer_title: "Escuela LATAM de Inteligencia Artificial 2025",
+            contact_us: "Contáctanos",
+            contact_info: "Para más información sobre la Escuela LATAM de IA 2025",
+            contact_email: "Email: info@lasia2025.org",
+            copyright: "© 2025 Copyright - SAC",
+            privacy_policy: "Política de privacidad",
+            terms_of_use: "Términos de uso",
+            faqs: "Preguntas frecuentes"
+        },
+        en: {
+            // Navigation items with Nav suffix
+            homeNav: "Home",
+            informationNav: "Information",
+            speakersNav: "Speakers",
+            syllabusNav: "Syllabus",
+            scheduleNav: "Schedule",
+            sponsorsNav: "Sponsors",
+            datesNav: "Dates",
+            faqNav: "FAQ",
+            organizersNav: "Organizers",
+            contactNav: "Contact",
+            // Hero
+            title: "LATAM School of Artificial Intelligence 2025",
+            colocated: "Co-located with SIMBig 2025",
+            location: "📍 FISI-UNMSM, Lima, Perú",
+            date: "📅 29–31 October 2025",
+            days: "DAYS",
+            hours: "HOURS",
+            minutes: "MINUTES",
+            seconds: "SECONDS",
+
+            // Information Cards
+            place_registration: "Place and registration",
+            place_registration_desc: "The Latin American School of AI will take place at FISI-UNMSM in Lima, Peru. Registration is required for participation.",
+            intended_audience: "Intended audience",
+            intended_audience_desc: "Students, researchers, and professionals interested in artificial intelligence and machine learning from Latin America.",
+            organization: "Organization",
+            organization_desc: "Organized by leading AI researchers and institutions from Latin America in collaboration with SIMBig.",
+            requirements: "Requirements",
+            requirements_desc: "Basic knowledge of programming or mathematics. Laptop required for hands-on sessions.",
+
+            // About
+            about_us: "ABOUT US",
+            about_desc: "The Latin American School of Artificial Intelligence (LASIA) is an intensive educational program designed to advance AI knowledge and research in Latin America. Our mission is to provide high-quality training, foster collaboration among researchers, and promote the development of AI solutions for regional challenges.<br><br>We bring together leading experts from around the world to share their knowledge through lectures, workshops, and hands-on sessions, creating a unique learning experience for the next generation of AI researchers and practitioners.",
+
+            // Speakers
+            speakers: "SPEAKERS",
+            speaker1_name: "Diana Inkpen",
+            speaker1_role: "University of Ottawa, Canada",
+            speaker1_bio: "Diana Inkpen is a Professor at the University of Ottawa, in the School of Electrical Engineering and Computer Science. Her research is in applications of Computational Linguistics and Text Mining. She organized seven international workshops and she was a program co-chair for the AI 2012 conference. She is in the program committees of many conferences and an associate editor of the Computational Intelligence and the Natural Language Engineering journals. She published a book on Natural Language Processing for Social Media (Morgan and Claypool Publishers, Synthesis Lectures on Human Language Technologies), 8 book chapters, more than 25 journal articles and more than 90 conference papers. She received many research grants, including intensive industrial collaborations.",
+            speaker2_name: "Aline Villavicencio",
+            speaker2_role: "University of Exeter, UK",
+            speaker2_bio: "Aline Villavicencio is the Director of the Institute of Data Science and Artificial Intelligence, University of Exeter, affiliated to the Department of Computer Science, University of Sheffield (UK), and has a Fellowship at the Alan Turing Institute. Before these, she held academic positions in the Institute of Informatics, Federal University of Rio Grande do Sul, Brazil (between 2005 and 2021) and in the School of Computer Science and Electronic Engineering, University of Essex, UK.",
+
+            // Syllabus
+            syllabus: "SYLLABUS",
+            to_be_announced: "To be announced",
+
+            // Schedule
+            schedule: "SCHEDULE",
+            schedule_coming_soon: "Schedule coming soon",
+
+            // Sponsors
+            sponsors: "SPONSORS",
+
+            // Dates
+            dates: "DATES",
+            oct: "OCT",
+            day1_desc: "Opening & Keynotes",
+            day2_desc: "Workshops & Sessions",
+            day3_desc: "Presentations & Closing",
+
+            // FAQ
+            faq_title: "FREQUENTLY ASKED QUESTIONS",
+            faq1_q: "What is the LATAM School of AI?",
+            faq1_a: "It is an artificial intelligence school aimed at students and professionals from Latin America, with intensive sessions and conferences.",
+            faq2_q: "Where will it take place?",
+            faq2_a: "At the Faculty of Systems Engineering (FISI) of the Universidad Nacional Mayor de San Marcos (UNMSM), Lima, Peru.",
+            faq3_q: "What are the requirements?",
+            faq3_a: "Basic knowledge of programming or mathematics and a laptop for hands-on sessions.",
+            faq4_q: "Is registration free?",
+            faq4_a: "Registration information will be announced soon. Check our website for updates.",
+            faq5_q: "What language will the sessions be in?",
+            faq5_a: "Sessions will be conducted in English and Spanish, depending on the speaker.",
+            faq6_q: "Will accommodation be provided?",
+            faq6_a: "Participants are responsible for their own accommodation. We will provide a list of recommended hotels.",
+            faq7_q: "Can I present my research?",
+            faq7_a: "Yes, there will be poster sessions and presentation opportunities for participants.",
+            faq8_q: "Will meals be provided?",
+            faq8_a: "Coffee breaks and lunch will be provided during the event days.",
+            faq9_q: "How can I contact the organizers?",
+            faq9_a: "You can contact us through the email addresses provided in the contact section.",
+            faq10_q: "Will sessions be recorded?",
+            faq10_a: "Selected sessions may be recorded and made available to participants after the event.",
+            faq11_q: "Can I attend if I'm not a student?",
+            faq11_a: "Yes, the event is open to students, professionals and those interested in AI with basic programming or mathematics knowledge.",
+            faq12_q: "Will there be a certificate?",
+            faq12_a: "Yes, a participation certificate will be awarded to those who attend all sessions.",
+
+            // Venue
+            venue: "VENUE",
+
+            // Organizers
+            organizers: "ORGANIZERS",
+
+            // Footer
+            footer_title: "LATAM School of Artificial Intelligenc 2025",
+            contact_us: "Contact us",
+            contact_info: "For more information about the LATAM School of AI 2025",
+            contact_email: "Email: info@lasia2025.org",
+            copyright: "© 2025 Copyright - SAC",
+            privacy_policy: "Privacy policy",
+            terms_of_use: "Terms of use",
+            faqs: "FAQs"
+        }
+    };
+
+    // Aplica traducción a la página
+    function translatePage(lang) {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(el => {
+            if (el.closest('.language-switch')) return; // Ignorar botón
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
+        });
+    }
+
+    // Actualiza idioma y animación
+    function updateLanguage(lang) {
+        localStorage.setItem('language', lang);
+        translatePage(lang);
+
+        // Animar el slider
+        if (lang === 'es') {
+            slider.style.transform = 'translateX(0%)';
+        } else {
+            slider.style.transform = 'translateX(100%)';
+        }
+
+        // Cambiar estilo activo
+        langOptions.forEach(opt => {
+            opt.classList.toggle('active', opt.dataset.lang === lang);
+        });
+    }
+
+    // Detectar idioma guardado o usar español por defecto
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('language') || 'es';
+        updateLanguage(savedLang);
+
+        // Agregar eventos
+        langOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const selectedLang = option.dataset.lang;
+                updateLanguage(selectedLang);
+            });
+        });
+    });
+</script>
 
 </html>
 
